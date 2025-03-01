@@ -1,0 +1,55 @@
+\section{Introduction}
+% par 1: Introduction to the Problem
+% Purpose: Define the problem and explain its significance.
+%  What is the problem, what is the challenge, and why is it important
+
+\begin{displayquote}
+[T]he many, who are not as individuals excellent men, nevertheless can, when they have come together, be better than the few best people, not individually but collectively, just as feasts to which many contribute are better than feasts provided at one person's expense.
+
+\begin{flushright}
+-- Aristotle, \textit{Politics} III
+\end{flushright}
+\end{displayquote}
+
+Collective intelligence relies on individual inputs to formulate an outcome, under the premise that individuals~\textit{can} express their attitudes accurately and aggregated in a suitable manner. Prior research had shown in condition where there existed multiple options to distribute limited resources, traditional survey tools, like the Likert Survey cannot easily elicit rankings among options. Other democratic preference aggregation tools, like 1-person-1-vote (1p1v) suffers from tarrany of the majority which risks minority voices over ease of use. Recent study demonstrated alternative tools like Quadratic Surveys (QS), a survey tool designed to elicit preferences more accurately than Likert scale surveys~\cite{chengCanShowWhat2021, quarfoot2017quadratic, cavaille2024cares} in these cases. A QS requires participants to purchase $k$ votes for an option in the survey costs $k^2$ credits~\cite{quarfoot2017quadratic,chengCanShowWhat2021} through making trade-offs using a fixed budget of credits. However, little do we understand how the mechanisms of QS supported such outcome.
+
+% ================================ %
+% par 2: Approaches to Address the Challenges
+% Purpose: Describe the existing approaches related to the problem.
+% Key Questions:
+%  - What are some broad approaches to addressing these challenges?
+%  - Do not go into detail about related work but give an idea of the major themes in related work.
+Prior research that demonstrated QS's results better reflect participant behaviors to demonstrate their alignment with Likert surveys used measures that is difficult to evaluate how rankings and rating stood against participant behaviors independently as QS is the few surveying method that elicits both measures from participants. Further, most comparisons focus on comparing QS with Likert with less exploration on a similar family of surveys --- constant sum surveys --- which arguably used a linear function working similar to QS. Researchers wonder if constant sum surveys care capable to achieving similar performance then QS considering most research citing `forced-trade off' as speculation of why QS performs better than Likert. Dispite recent investigation of the mental challenges from QS participants, they do not support our understanding of whether it is possible to reduce the complexity of QS mechanisms.
+
+% ================================ %
+% par 3: Your Proposal
+% Purpose: Present your main ideas and proposed solution.
+% Key Question:
+%  - What are you proposing? Provide a sketch of the major ideas.
+
+In this study, we utilized open data and software from~\citet{chengCanShowWhat2021} and deployed four more experiments that investigates different versions of constant sum surveys, as well as QS without a budget. We also designed two new evaluation measures to understand how different survey meachanisms -- Likert, QS with different budget, Constant sum with different budget, and Unlimited QS performs against participant behaviors in terms of ranking and rating the provided set of options. More formally, we pose the following research questions:
+\begin{itemize}
+    \item [\textbf{RQ1.}] How effectively does QS capture participant preferences when analyzing pairwise comparisons and preference intensities, as opposed to using a high-dimensional similarity measure (i.e., cosine similarity) to compare QS results with participant behaviors?
+    \item [\textbf{RQ2.}] How do the two foundational components of the Quadratic Voting mechanism---fixed budget and quadratic cost---individually and jointly impact its effectiveness in eliciting individual preferences?
+\end{itemize}
+
+% ================================ %
+% par 4: Main Findings
+% Purpose: Summarize the key findings from your work.
+% Key Question:
+%  - What are the main findings?
+
+We recruited 202 MTurk participants using stratified sampling matching the US census population to participate in an online study where participants completed either a QS without a budget or two constant sum survey (CS) with varying amount of budget modifying the open source software from~\citet{chengCanShowWhat2021}. We constructed two Bayesian models to compare these results with their open source dataset~\cite{illinoisdatabankIDB-1928463}. Our results found that ...
+
+
+% ================================ %
+% par 5: Main Contributions
+% Purpose: Identify and explain the primary contributions of your work.
+% Key Structure:
+%  1. Line 1: Identify your contribution—conceptualization, framework, interface, algorithm, etc.
+%  2. Line 2: Contrast your contribution with prior work.
+%  3. Line 3: Explain how you accomplished your contribution.
+%  4. Line 4: Emphasize the impact of the contribution—why should anyone care?
+
+\paragraph{Contributions}
+We contribute to the IC community by further verifying QS's ability to elicit individual preferences when compared to Likert scale surveys and constant sum surveys. Our study demonstrated that the limited budget that introduces trade-offs is not the only reason that made QS more aligned with individual behaviors, but also the rising cost reflects the diminishing marginal utility making individuals more sensitive to their ability to express preferences. Thus, QS requires both quadratic cost and limited budget, empirically, aligning with the theoretical design of the quadratic voting mechanism for which it was originally developed for~\cite{lalley2016quadratic}.

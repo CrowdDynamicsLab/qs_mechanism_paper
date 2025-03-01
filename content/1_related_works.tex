@@ -1,0 +1,51 @@
+\section{Related Work}
+\label{sec:relatedWorks}
+This study covers the comparison between quadratic surveys and constant sum surveys for which we explore in this section.
+
+\subsection{Quadratic Survey and the Quadratic Mechanism}
+Quadratic Surveys are surveys that embeds the 
+
+
+
+We introduce the term \textbf{Quadratic Survey (QS)} to describe surveys that utilize the quadratic mechanism to collect individual attitudes. The~\textbf{quadratic mechanism} is a theoretical framework designed to encourage the truthful revelation of individual preferences through a quadratic cost function~\cite{grovesOptimalAllocationPublic1977}. This framework gained popularity through~\textbf{Quadratic Voting (QV)}, also known as plural voting, which uses a quadratic cost function in a voting framework to facilitate collective decision-making~\cite{lalley2016quadratic}.
+
+To illustrate how QS works, we formally define the mechanism: each survey respondent is allocated a fixed budget, denoted by $B$, to distribute among various options. Participants can cast $n$ votes for or against option~$k$. The cost~$c_k$ for each option $k$ is derived as:
+\begin{equation*}
+c_k = n_k^2 \quad \text{where}\quad n_k \in \mathbb{Z}
+\end{equation*}
+The cost of all votes must not exceed the participant's budget:
+\begin{equation*}
+\sum_k c_k \leq B
+\end{equation*}
+Survey results are determined by summing votes for each option:
+\begin{equation*}
+\text{Total Votes for Option } k = \sum_{i=1}^{S} n_{i,k}    
+\end{equation*}
+where $S$ represents the total number of participants, and~$n_{i,k}$ is the number of votes cast by participant~$i$ for option~$k$. Each additional vote for each option increases the marginal cost linearly, encouraging participants to vote proportionally to their level of concern for an issue~\cite{posner2018radical}.
+
+QS adapts these strengths of the quadratic mechanism in \textit{voting} to encourage truthful expression of preferences in \textit{surveys}. Unlike traditional surveys that elicit either rankings~\textit{or} ratings, QS allows for~\textit{both}, enabling participants to cast multiple votes for or against options, incurring a quadratic cost.~\citet{chengCanShowWhat2021} showed that this mechanism aligns individual preferences with behaviors more accurately than Likert Scale surveys, particularly in resource-constrained scenarios like prioritizing user feedback on user experiences.
+
+In recent years, empirical studies on QV have expanded into various domains~\cite{naylor2017first, cavaille2024cares}. Applications based on the quadratic mechanism have also grown, including Quadratic Funding, which redistributes funds based on outcomes from consensus made using the quadratic mechanism~\cite{buterinFlexibleDesignFunding2019a, freitasQuadraticFundingIncomplete2024}. Recent work by \citet{southPluralManagement2024} applies the quadratic mechanism to networked authority management, later used in Gov4git~\cite{Gov4gitDecentralizedPlatform2023}. Despite the increasing breadth and depth of applications utilizing the quadratic mechanism, little attention has been paid to user experience and interface design, which support individuals' preference intensity elicitation. Our work aims to address this by designing interfaces for quadratic mechanisms.
+
+\subsection{Existing QV Interfaces}
+\label{sec:related_qv}
+
+Since QS shares QV's underlying mechanism, we used snowball sampling to identify publicly available QV applications mentioned in news and academic sources. Currently, no widely adopted QV interface is tied to a single vendor or platform.~\Cref{fig:rcx_interface_annotated} shows two variations of existing QV interfaces, with both employing a single-step approach with different visual representations of common elements~\cite{Gov4gitDecentralizedPlatform2023, yehjxraymondYehjxraymondQvapp2024, chengCanShowWhat2021, cavaille2024cares}. All QV interfaces generally include:
+
+\begin{itemize}[leftmargin=*]
+    \item Option list: A list of options for voting.
+    \item Vote controls: Buttons to add or remove votes for each option.
+    \item Individual vote tally: A display of the votes cast per option.
+    \item Summary: A summary of costs and the remaining budget.
+\end{itemize}
+
+These components let users operate QV mechanically, providing little understanding of voters' usability needs nor offering cognitive support. In addition, HCI research on survey interfaces is limited~\cite{nobarany2012design, van2007design} with most efforts focusing on alternative input modalities like bots, voice interfaces, or virtual reality~\cite{voiceWei2022, khullar2021, kimComparingDataChatbot2019, feick2020virtual}.
+
+\subsection{Cognitive Challenges and Choice Overload}
+The challenge of respondents making difficult decisions using quadratic mechanisms remains unexplored in the literature.~\citet{lichtensteinConstructionPreference2006} identified three key elements that make decisions difficult. \change{These elements include making decisions in unfamiliar contexts, quantifying the value of one's opinions, and being forced to make trade-offs due to conflicting choices. QS fits at least two of the three elements: participants may encounter a selection of unfamiliar options by the survey designer; they are asked to quantify the difference between option preferences through a numerical vote; and the budget constraint enforces trade-offs under a non-linear function, which means that a vote decrease for one option is not necessary equivalent to an increase for another, making iterative adjustment and evaluating tradeoffs difficult. Thus, we believe QS introduces a high cognitive load.}
+
+Cognitive load refers to the demands placed on a user's working memory during the interaction process, which significantly influences the usability of the system~\cite{cooper1998research, seppCognitiveLoadTheory2019}. Cognitive overload can adversely affect performance~\cite{drommi2001interface}, leading individuals to rely on heuristics rather than deliberate, logical decision-making~\cite{daniel2017thinking}. When presented with excessive information, such as too many options, individuals 'satisfice', settling for a 'good enough' solution rather than an optimal one~\cite{simonBehavioralModelRational1955, payneAdaptiveStrategySelection1988, tverskyJudgmentsRepresentativeness}. Subsequently, too many options can overwhelm individuals, resulting in decision paralysis, demotivation, and dissatisfaction~\cite{iyengarWhenChoiceDemotivating2000}.
+
+Additionally,~\citet{alwinMeasurementValuesSurveys1985} highlighted that the use of ranking techniques in surveys can be time-consuming and potentially more costly to administer. These challenges are compounded when ranking numerous items, requiring substantial cognitive sophistication and concentration from survey respondents \cite{featherMeasurementValuesEffects1973}.
+
+Notable applications of QV include the 2019 Colorado House, which considered 107 bills~\cite{coyNewWayVoting2019}, and the 2019 Taiwan Presidential Hackathon, which featured 136 proposals~\cite{QuadraticVotingFrontend2022}; both used a single QV question with hundreds of options. These empirical applications of QV suggest the importance of understanding QS with many options' impact on cognitive load and support developing interfaces for practical uses.

@@ -1,0 +1,30 @@
+\newenvironment{tldrbox}{
+    \def\FrameCommand{%
+        {\color{darkgray}\vrule width 1.5pt} % Left rule
+        \colorbox{lightgray}                 % Background color
+    }
+    \MakeFramed{\advance\hsize-\width \FrameRestore}
+    \vspace{3pt} % Top padding
+    \hspace{5pt} % Left padding
+}{
+    \hspace{5pt} % Right padding
+    \vspace{3pt} % Bottom padding
+    \endMakeFramed
+}
+\newcommand{\bracketellipsis}{[\ldots]\xspace}
+
+\renewenvironment{displayquote}
+  {\list{}{\small\leftmargin=0.5em\rightmargin=0em\topsep=0.75ex}\item\relax\itshape\color{darkgray}}
+  {\endlist}
+
+\newcommand{\quoteby}[1]{%
+    \\[-0.7ex]
+    \begin{minipage}[t]{\linewidth}
+        \hfill \textnormal{\faCommentsO}~\texttt{#1}
+    \end{minipage}
+}
+
+
+\newcommand{\smallquote}[2]{
+    {\color{darkgray}\textup{\texttt{#1}}~\faCommentsO~\textit{#2}}
+}

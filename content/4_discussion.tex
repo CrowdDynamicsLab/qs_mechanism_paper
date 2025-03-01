@@ -1,0 +1,106 @@
+\section{Discussion and Future Work}
+\label{sec:discussion}
+
+In this section, we interpret our findings on cognitive load and respondent behavior in a QS. We highlight the rationale and elements behind the two-phase interface for preference construction and its potential to mitigate satisficing behaviors. We also offer usage and design recommendations for practitioners and outline future directions for improving QS interfaces.
+
+\subsection{Two-phase interface: a worthwhile trade-off}
+Survey designers seek thoughtful responses from participants. This means the interface should balance survey usability, respondent satisfaction, and the effort individuals invest in their responses. Our results indicate that the two-phase interface encouraged deeper participant engagement with the options and reduced satisficing behaviors, despite its increased time per option and higher cognitive load for the long QSs.
+
+\subsubsection{Analysis through the lens of cognitive load theory}
+Cognitive load theory~\cite{swellerCognitiveLoadTheory2011}, when applied to QSs, identifies three components of cognitive load: intrinsic load (the cognitive demand required to understand questions and response options), germane load (associated with deeper processing and preference evaluation), and extraneous load (stemming from navigating and operating the survey interface).
+
+Participants were randomly assigned to experimental conditions, with survey lengths containing options randomly drawn from a common pool to control for intrinsic load within the same group. 
+
+When a QS is short, participants can engage with all options simultaneously. Participants using the two-phase interface traded a slightly longer survey response time for a potential reduction in cognitive load and edit distance. We interpret this as participants freeing up cognitive demand from extraneous load for germane load, prompting them to better construct and express their preferences.
+
+When a QS is long, participants face more options, resulting in a higher intrinsic load at the start of the survey. We believe the two-phase interface traded longer survey response time and a potential increase in cognitive load for deeper engagement with the survey. This heightened cognitive load likely stemmed from making comparisons in both the organization and voting phases. Quantitatively, participants spent more time per option, suggesting deeper engagement while exerting limited extraneous load, as evidenced by shorter traversals during voting. Qualitatively, participants reported experiencing demand primarily from strategic considerations (germane load) rather than operational actions (extraneous load), which were more common among text interface participants.
+
+While some might argue that the additional organizing phase offers participants more opportunities to familiarize themselves with the options compared to text interface participants, the greater overall edit distance and high variance in edit distance per option suggest that text interface participants traversed the list frequently. This finding is further supported by qualitative data, where 70\% of long-text participants (N=7) reported scanning the list while voting. This behavior suggests that while long-text participants had opportunities to familiarize themselves with the options, the explicit organization phase encouraged deeper reflection on their preferences.
+
+The effect of the two-phase interface shows nuanced differences influencing cognitive load outcomes; however, both analyses suggest that the two-phase interface \textit{shifted} participants' cognitive focus when completing QS.
+
+\subsubsection{Potential in limiting Satisficing}
+Qualitative findings (Section~\ref{sec:satisficing}) on potential satisficing behavior highlight the importance of careful consideration when deploying a long QS. However, the two-phase interface appeared to limit satisficing behaviors, as evidenced by fewer observations compared to the long text interface for the long QS and none for the short QS. We believe the potential reasons lie in the design of the two-phase interface, which scaffolds the preference construction process.
+
+The deliberate one-option-at-a-time presentation during the voting task in the two-phase interface reduced reliance on defaults and encouraged deeper reflection using cognitive strategies such as \textit{\smash{problem decomposition}}~\cite{simonSciencesArtificial1996} and \textit{\smash{dimension reduction}}, both of which are known to reduce cognitive overload.
+
+When asked about their experience with the interface, four participants highlighted how the organization phase supported their preference construction.\texttt{S013} illustrated how the one-option-at-a-time approach reduced the dimensions of decision-making:
+
+\begin{displayquote}  
+\bracketellipsis it (organization phase) gives you time to just focus on that single thing and rank it based on how you feel at that moment. \hfill\quoteby{S013 (S2P)}  
+\end{displayquote}  
+
+This focused mode enabled deeper reflection. When considering relative preferences among QS options,\texttt{S013} described how it structurally decomposed the problem:
+
+\begin{displayquote}  
+\bracketellipsis to have a preliminary categorization of all the topics ~\bracketellipsis (allowed me) to think about and process~\bracketellipsis digest all the information prior to actually allocating the budget~\bracketellipsis \hfill\quoteby{S009 (L2P)}  
+\end{displayquote}  
+
+This quote highlighted how participants' deliberation occurred during the organization phase, enabling them to focus on constructing preferences without worrying about budget management---both of which are cited sources of cognitive load. Although direct measurement of satisficing behavior reduction is challenging, qualitative data and participant feedback suggest that the two-phase interface potentially limits such behaviors. Based on this evidence, we recommend that long QSs be implemented with a two-phase interface and sufficient time for participants to complete the process. We suggest future research investigate the mental processes underlying satisficing behaviors in long QSs. 
+
+\textbf{In summary,} we argue that the trade-off of a longer completion time and potentially higher cognitive load in the two-phase interface is justified. Drawing on cognitive load theory, the interface fosters deeper engagement with the options. Additionally, our qualitative findings and participant feedback suggest that the interface may reduce satisficing, aligning with decision-makers' goals of obtaining thoughtful and deliberate responses from participants.
+
+% ============================== %
+\subsection{Preference Construction guided by Organize, Then Vote}
+Completing a QS involves a series of in-situ, difficult decision tasks as participants construct their preference over unfamiliar options~\cite{lichtensteinConstructionPreference2006}, as one participant reflected:
+
+\begin{displayquote}
+Oh, there are other aspects that I never care about.~\bracketellipsis Why (should) I spend money on that? \hfill\quoteby{S037 (L2P)}
+\end{displayquote}
+
+We believe the two-phase interface supported participants' preference construction process when faced with unfamiliar options.
+
+First, 40\% of long-text participants (N=4) found it challenging to facilitate differentiation without organization tools that would allow grouping or drag-and-drop, as~\texttt{S025} said:
+
+\begin{displayquote}
+    I would like to be able to like, click and drag the categories themselves so I could maybe reorder them to like my priorities.~\bracketellipsis make myself categories and subcategories out of this list~\ldots If I could organize it. \hfill\quoteby{S025 (LT)}
+\end{displayquote}
+
+In contrast, 60\% (N=6) of long two-phase participants appreciated the upfront introduction of all options, which enabled them to organize and use drag-and-drop features to facilitate QS completion. Not only did participants use drag-and-drop options post-voting to reflect and ensure correct vote allocation, but drag-and-drop also enabled participants, like~\texttt{S039}, to make fine-grained comparisons between options:
+
+\begin{displayquote}  
+    I think the system was actually really helpful because I could just drag them.~\bracketellipsis I can really compare them, I can drag this one up here, and then compare it to the top one~\bracketellipsis \hfill\quoteby{S039 (S2P)}  
+\end{displayquote}  
+
+This supports our intention of applying~\citet{svensonDifferentiationConsolidationTheory1992}'s differentiation and consolidation theory, in which participants attempt to identify differences and eliminate less favorable options. The organization phase and the drag-and-drop supported some degree of differentiation process.
+
+\begin{displayquote}
+    ~\bracketellipsis the hardest part deciding in which category of place (prefernce bin) each issue is. \hfill\quoteby{S021 (L2P)}
+\end{displayquote}
+
+This quote by~\texttt{S021} best represents the potential of the organization phase in separating part of the difficult decisions one needs to make when differentiating their preferences during preference construction. With the selected options, the shorter edit distance of long two-phase interface participants suggested that they were consolidating their identified preferences through votes.
+
+
+% ========================= %
+
+\subsection{What We Learned: Quadratic Survey Usage and Design Recommendations}
+This study represents a crucial step toward developing better interfaces to support individuals responding to QSs by providing a deeper understanding of how survey respondents interact with QSs and the sources of cognitive load. In this subsection, we outline usage and design recommendations applicable to all applications of the quadratic mechanism.
+
+\subsubsection{QS: Prioritizing Fewer Options or High-Stakes Evaluations}
+We recommend deploying a QS with smaller sets of options or for critical evaluations, such as eliciting stakeholders' preferences before making investment decisions in hospital infrastructure. Our findings indicate that cognitive challenges and time requirements increase significantly as the number of options grows. For a long QS, while the two-phase interface helps mitigate some challenges, it does not eliminate them entirely, making adequate deliberation time essential. If a two-phase interface is unavailable, survey designers should present options in advance to allow participants to familiarize themselves and reflect before completing the QS.
+
+\subsubsection{Facilitate Quadratic Mechanism Applications through Categorization, Not Ranking}
+In a QS, the final ranking of preferences is typically a byproduct of vote allocation rather than a deliberate ranking effort. Participants did not explicitly rank options; instead, their preferences emerged dynamically through the voting process. To better support this preference construction, future quadratic mechanism interface designs should focus on helping participants categorize options effectively rather than ranking them directly. Facilitating differentiation among options is more critical than enabling precise manipulation for fine-tuning. We believe this approach extends beyond QSs to other ranking-based survey tools, such as ranked-choice voting and constant-sum surveys. Further research should examine how implementing such functionality influences survey respondents' mental models.
+
+\subsection{Future work: Opportunities for Better Budget Management}
+Budget management emerged as one of the participants' most prominent challenges, which the two-phase interface did not address. 35\% of participants (N=14) emphasized that current quadratic mechanism applications support automated calculations, but noted their insufficiency. We identified three challenges for future work:
+
+First, participants struggled to decide on an initial vote allocation. Some distributed credits equally across options, while others used $1$, $2$, or $3$ votes as starting points. A few anchored their decisions to the tutorial's example of four upvotes. This suggests a need to better understand whether individuals have absolute value preferences among options. Second, 12.5\% of participants (N=5) expressed confusion about the relationship between budget, votes, and outcomes, despite understanding their definitions. They struggled to make trade-offs between votes and budget, leading to frustration and hampered decision-making. Third, determining the absolute amount of credits in a QS is highly demanding. Designing interfaces and interactions to address the cold start challenge and help participants decide on the absolute vote value, while also considering ways to limit direct influences, remains an open question.
+
+We believe that, with a well-designed interface backed by real-time computing and a better understanding of how individuals calculate trade-offs, we can provide innovative solutions to help participants more easily express their preferences using QSs.
+
+\section{Limitations}
+\label{sec:limitations}
+Evaluating the QS interface is challenging because of its novelty. We identified several limitations that warrant further research.
+
+\paragraph{Individual differences in cognitive capacity}
+Variations in individual cognitive capacity influenced participants' performance and cognitive scores. For example, participants with greater experience in decision-making may be better able to manage multiple options.  A within-subject study could clarify shifts in cognitive load, but deconstructing established preferences and altering options introduces additional complexity. Therefore, we opted for this in-depth, between-subject study, although the small sample size may introduce noise, potentially distorting the measurement of cognitive load. Future research should aim to quantify the impact of different QS interfaces on cognitive load at a larger scale. Furthermore, participants completed this study in a controlled laboratory environment, with options displayed on a large screen. Future work should also investigate how individuals respond to QSs on smaller devices and in less controlled environments.
+
+\paragraph{Limited experience with QSs}
+Participants lacked prior experience with the QS interface. After completing a tutorial and quiz, participants proceeded to perform tasks using the QS interface. While participants understood the mechanics of QSs, their familiarity with the interface likely influenced their strategies and cognitive load. As quadratic mechanisms become more prevalent, future research could compare the performance of novices and experts.
+
+\paragraph{Limitations of Time and Distance as Proxies for Decision-Making Effort}
+While time and distance are common metrics for quantifying the effort involved in decision-making, they do not capture without noise. Participants may have considered multiple options simultaneously. We acknowledge that these metrics are approximate indicators of decision-making effort. Despite these limitations, this approach provides valuable insights into decision-making within our experimental constraints.
+
+\paragraph{Other Limitations}
+Finally, although we observe meaningful trends in the Bayesian statistical results, the small sample size limits our ability to establish statistical significance in cognitive load differences. Additionally, despite our best efforts to ensure transparency in the qualitative analysis, potential biases may have been introduced by relying on a single coder. Future work should address these limitations by incorporating larger sample sizes and multiple coders to enhance the reliability and generalizability of findings related to cognitive load in QSs.
