@@ -11,9 +11,12 @@
 \end{flushright}
 \end{displayquote}
 
-Collective intelligence (CI) relies on aggregating individual inputs to generate high-quality outcomes, under the assumption that individuals~\textit{can} express their preferences accurately and that these expressions can be meaningfully synthesized. However, traditional survey tools—such as Likert scales—struggle to elicit both rankings and intensity of preferences, particularly in scenarios where individuals must allocate limited resources across multiple options. Similarly, democratic aggregation tools such as one-person-one-vote (1p1v) often suffer from the tyranny of the majority, failing to capture the strength of minority preferences. These limitations pose a challenge for CI systems, which depend on precise preference elicitation to facilitate collective decision-making.
+% collective intelligence requires good tools for individual prefernce construction and elicititation
+Collective intelligence (CI) depends on effectively aggregating individual inputs to produce high-quality outcomes. This process relies on the assumption that the instrument captures individuals' complete set of expressed preferences and that the aggregation mechanism allows fair synthesis among these preferences into a coherent collective decision. Traditional survey methods---such as Likert scales---often fail to elicit both preference rankings and intensities, especially when limited resources must be distributed across multiple options. Likewise, one-person-one-vote (1p1v) systems can lead to the ``tyranny of the majority'' overlooking the strength of minority preferences. These limitations pose a significant challenge for CI systems that rely on nuanced preference data.
 
-Recent studies have explored alternative approaches, including Quadratic Surveys (QS), a survey tool designed to elicit preferences more accurately than Likert scales~\cite{chengCanShowWhat2021, quarfoot2017quadratic, cavaille2024cares}. QS requires participants to "purchase" $k$ votes for an option, where the cost follows a quadratic function, $k^2$~\cite{quarfoot2017quadratic, chengCanShowWhat2021}, thereby forcing trade-offs within a fixed budget. By introducing an economic constraint, QS aims to balance individual expressiveness with meaningful aggregation, making it particularly relevant for CI applications that seek to capture both preference intensity and diversity. While QS has demonstrated promising results, the specific mechanisms that contribute to its effectiveness remain insufficiently understood.
+% QS is an recent alternative for good individual preference elicitation when compared to Likert.
+Recent studies have explored Quadratic Surveys (QS) as an alternative to Likert scales for preference elicitation in resource constraint scenerios~\cite{chengCanShowWhat2021, quarfoot2017quadratic, cavaille2024cares}. Under QS, respondents use a fixed budget to ``purchase'' $k$ votes for each option, where the cost follows $k^2$. This quadratic cost function is intended to encourage participants to tradeoff carefully on how they distribute votes, revealing not only which options they favor but also how strongly they favor them. While QS appears promising, its reliance on both a fixed budget and a quadratic cost heightens cognitive load~\cite{chengOrganizeThenVote2025}, and raises a key question: could we achieve comparable expressiveness with a simpler linear scheme~\cite{quarfoot2017quadratic, chengCanShowWhat2021, cavaille2024cares} or by removing the budget constraint and rely on the quadratic cost function?
+
 
 % ================================ %
 % par 2: Approaches to Address the Challenges
@@ -21,8 +24,12 @@ Recent studies have explored alternative approaches, including Quadratic Surveys
 % Key Questions:
 %  - What are some broad approaches to addressing these challenges?
 %  - Do not go into detail about related work but give an idea of the major themes in related work.
-Prior work comparing QS to Likert scales has primarily focused on evaluating its effectiveness in preference elicitation, but these studies often conflate rankings and ratings. QS is one of the few survey tools capable of eliciting both simultaneously, making it difficult to isolate how well each measure aligns with participant behavior independently. Additionally, while QS has been extensively compared to Likert scales, fewer studies have examined its relationship to a similar class of surveys—constant sum surveys (CSS)—which employ a linear cost function. Since QS's advantage over Likert scales is often attributed to the forced trade-offs introduced by its budget constraint, researchers have questioned whether a simpler linear cost structure could achieve similar results. Understanding whether a linear cost structure can replicate QS's effects is crucial for CI applications, where balancing cognitive effort and preference accuracy is key. While recent investigations have explored the cognitive challenges QS imposes on participants, they do not clarify whether the quadratic cost function itself is necessary or whether a linear alternative could reduce complexity while maintaining effectiveness.
 
+% prior research explore limited comparisons on the effectiveness of QS
+Prior work has largely compared QS to Likert scales, finding that QS can capture preference intensities more effectively~\cite{quarfoot2017quadratic,naylor2017first,chengCanShowWhat2021,cavaille2024cares}. However, most studies do not disentangle QS's two central constraints: a fixed budget and a quadratic cost. Clarifying which element drives QS's alignment with participant behaviors offers an opportunity to streamline the mechanism without sacrificing effectiveness.
+
+
+The linear variant of QS, which we term \emph{Linear Survey (LS)}, closely resembles Constant Sum Surveys (CSS)\cite{metfesselProposalQuantitativeReporting1947}. Despite its long history in marketing research and early validation, CSS has shown mixed results in more recent evaluations\cite{}. Although it is mathematically equivalent to LS, CSS frames the process differently by disallowing negative votes and often requiring respondents to use their entire budget. Further, there are no official guideline on how many options and credits designers can place on a CSS. This distinction motivates an empirical investigation to determine whether CSS---or a linear QS---can approximate the benefits of the full quadratic mechanism.
 
 % ================================ %
 % par 3: Your Proposal
@@ -30,11 +37,11 @@ Prior work comparing QS to Likert scales has primarily focused on evaluating its
 % Key Question:
 %  - What are you proposing? Provide a sketch of the major ideas.
 
-To address these gaps, we build on the open data and software from~\citet{chengCanShowWhat2021} and conduct four additional experiments exploring variations of constant sum surveys, as well as a version of QS without a budget constraint. We design two new evaluation measures to assess how different survey mechanisms—including Likert scales, QS with varying budgets, constant sum surveys with different budgets, and unlimited QS—perform in capturing participant preferences. Given the role of CI in leveraging individual judgments for collective insights, this study seeks to clarify the trade-offs between different preference elicitation mechanisms. More formally, we pose the following research questions:
+Thus, to better understand QS, we propose to disentangle its two components, budget and quadratic cost, and assess whether simpler mechanisms offer comparable results. We introduce two evaluation measures for ranking and rating that compares the different survey mechanisms, ``Unlimited'' QS (UQS for short), LV, Likert-scaled surveys (Likert for short), and QS with participant's donation behaviors. We aim to understand which survey instrument better reflects incentive compatible donation outcomes. Formally, our research questions are:
 
 \begin{itemize}
-\item [\textbf{RQ1.}] How effectively does QS capture participant preferences when analyzing pairwise comparisons and preference intensities, as opposed to using a high-dimensional similarity measure (e.g., cosine similarity) to compare QS results with participant behaviors?
-\item [\textbf{RQ2.}] How do the two foundational components of the Quadratic Voting mechanism—fixed budget and quadratic cost—individually and jointly impact its effectiveness in eliciting individual preferences?
+    \item [\textbf{RQ1.}] How effectively does QS capture participant preferences in pairwise comparisons and preference intensities, relative to high-dimensional similarity measures (e.g., cosine similarity)?
+    \item [\textbf{RQ2.}] How do the budget constraint and quadratic cost—core components of Quadratic Voting—individually and jointly affect the quality of elicited preferences?
 \end{itemize}
 
 % ================================ %
@@ -43,7 +50,7 @@ To address these gaps, we build on the open data and software from~\citet{chengC
 % Key Question:
 %  - What are the main findings?
 
-To investigate these questions, we recruited 202 MTurk participants using stratified sampling to match the U.S. census population. Participants completed either a QS without a budget or a constant sum survey (CS) with varying budget constraints, using a modified version of the open-source software from~\citet{chengCanShowWhat2021}. We constructed two Bayesian models to compare these results with the publicly available dataset from~\citet{illinoisdatabankIDB-1928463}. Our results reveal that ...
+To investigate these questions, we recruited 202 MTurk participants using stratified sampling to approximate U.S. census demographics. Building on the software from~\citet{chengCanShowWhat2021}, we conduct four additional experiments that remove budget constraints or altered the cost function. Specifcially, participants completed either a UQS, or two versions of Linear Voting with different budgets (36, 108, or 324 credits) before completing a donation task. Together with open datasets on QS and Likert surveys~\cite{illinoisdatabankIDB-1928463}, we compare the effectiveness of these survey mechanisms using two Bayesian models to evaluate the ordinal and interval measures of the survey results and donation behaviors. Our results reveal that ...
 
 % ================================ %
 % par 5: Main Contributions
@@ -55,5 +62,16 @@ To investigate these questions, we recruited 202 MTurk participants using strati
 %  4. Line 4: Emphasize the impact of the contribution—why should anyone care?
 
 \paragraph{Contributions}
-We contribute to the collective intelligence community by further validating QS's ability to elicit individual preferences in comparison to Likert scales and constant sum surveys. Our findings demonstrate that the budget constraint alone does not fully explain QS's superior alignment with participant behavior; rather, the quadratic cost function, which introduces diminishing marginal utility, plays a critical role in shaping preference expression. By empirically demonstrating that QS requires both quadratic costs and budget constraints to achieve its intended effect, we provide deeper insights into designing preference elicitation mechanisms for CI applications. This study reinforces the theoretical foundation of quadratic voting~\cite{lalley2016quadratic} while broadening its implications for collective decision-making.
+This study reinforces the theoretical foundation of quadratic voting~\cite{lalley2016quadratic} while broadening its implications for the collective intelligence community in the following ways:
+\begin{itemize}
+    \item \textbf{Rigorous evaluation metrics.} We adopt a more nuanced approach to measuring alignment between survey responses and actual participant behaviors. Our results indicate that QS outperforms Likert scales and possibly CSS in resource-constrained scenarios.
+    \item \textbf{Mechanics of QS.} By decomposing QS into its two components---budget and quadratic cost---we empirically confirm that both are necessary for capturing nuanced preference intensities.
+    \item \textbf{Guidance for survey designers.} Our findings suggest that researchers relying on CSS may benefit from incorporating QS, which elicits both preference rankings and intensities more effectively.
+\end{itemize}
 
+
+
+% old tex
+% comparing QS to Likert scales has primarily focused on evaluating its effectiveness in preference elicitation, but these studies often conflate rankings and ratings. QS is one of the few survey tools capable of eliciting both simultaneously, making it difficult to isolate how well each measure aligns with participant behavior independently. Additionally, while QS has been extensively compared to Likert scales, fewer studies have examined its relationship to a similar class of surveys—constant sum surveys (CSS)—which employ a linear cost function. Since QS's advantage over Likert scales is often attributed to the forced trade-offs introduced by its budget constraint, researchers have questioned whether a simpler linear cost structure could achieve similar results. Understanding whether a linear cost structure can replicate QS's effects is crucial for CI applications, where balancing cognitive effort and preference accuracy is key. 
+
+% While recent investigations have explored the cognitive challenges QS imposes on participants, they do not clarify whether the quadratic cost function itself is necessary or whether a linear alternative could reduce complexity while maintaining effectiveness.
