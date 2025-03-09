@@ -46,13 +46,11 @@ After the study, participants have a chance to read about the study's real purpo
 
 \subsection{Quantitative Measures: Ordinal and Interval Measures}
 \label{sec:quantitative_measures}
+Two prior empirical studies compared elicited survey responses with behavioral outcomes, such as donation~\cite{chengCanShowWhat2021,cavaille2024cares} or letter length~\cite{cavaille2024cares}, as proxies for individual preferences. ~\citet{chengCanShowWhat2021} employed a Bayesian model to compute cosine similarity, measuring the alignment between participants' stated preferences and observed behaviors. ~\citet{cavaille2024cares} used linear regression to estimate the differences between the two.
 
+While cosine similarity is useful for high-dimensional data, it presents interpretative challenges. For example, high alignment might result from large angular differences between vectors with identical rankings, while low alignment could stem from small angular differences between completely misaligned rankings. Linear regression, on the other hand, primarily captures correlations rather than causal relationships, limiting its explanatory power. Additionally, since each behavioral measure (e.g., donation, letter writing) represents a distinct task, it is difficult to compare relative preferences across options within the same participant.
 
-In the prior studies, the authors used cosine similiarity to measure the alignment between the participants' preferences and their behaviors. However, this measure while useful in tackling high-dimensional data, it risks errors in interpretation. For example, an alignment deemed high by cosine similarity could be due to a large difference in the angle between two vectors with completely aligned rankings compared to a low cosine similarity value that could be due to a small difference in the angle between two vectors with completely unaligned rankings. Based on prior literature in evaluating the effectiveness of CSS, many relied on seperate evaluations of both rankings and intervals between options to evaluate.
-
-In this study, we constructed two Bayesian model to evaluate both ordinal and interval measures of participants' survey results and behaviors.
-
-
+Thus, in this study, we draw from prior literature when comparing multi-option survey instruments in breaking down and evaluating QS's ability to elicit the ordinal and interval scales seperately~\cite{collewetPreferenceEstimationPoint2023}. We construct Bayesian models for both analysis considering its transparent nature for interpretatinf posterior distributions beyond binary thresholds~\cite{mcelreath2018statistical, kay2016researcher}. We describe the models in the following subsections.
 
 \subsubsection{Pairwise Ordinal Measures}
 \label{sec:ordinal_measures}

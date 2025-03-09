@@ -1,2 +1,36 @@
-The first analysis, which we termed~\textbf{sign analysis}, focuses on understanding how the outcomes from different instruments align with participants' donation behavior in terms of preference order. To achieve this, we construct pairwise comparisons between the two sets.We employ logistic regression to analyze the alignment between the instrument outcomes and donation behaviors. Each pairwise comparison examines if the preference order from these instruments corresponds to the donation order, assessing if these methods reflect consistent ordinal preferences.
+The first analysis, which we termed~\textbf{sign analysis}, focuses on understanding how the outcomes from different instruments align with participants' donation behavior in terms of preference order. To achieve this, we construct pairwise comparisons between the two sets. 
 
+After removing participants that made zero donations, for each pairwise option on a survey, we modeled $y_i$ as the outcome variable of whether the order of the two options expressed through the instrument aligns with the order of the donated amount. In other words, our model learns how well does a given survey instrument capture the preference between two options with their donation amount? Since the possible outcome would be either align or misaligned ($\pm 1$), we modeled the outcome variable $y_i$ as a Bernoulli distribution (Equation~\ref{eq:ordinal_model_overall}).
+
+\begin{equation}
+    \label{eq:ordinal_model_overall}
+    y_i \sim \text{Bernoulli}(\theta_i)
+\end{equation}
+
+\begin{equation}
+    \label{eq:ordinal_model_logit}
+    \text{logit}(\theta_i) = \alpha + \beta_c[C_i] + \beta_o[O_i] + \beta_p[P_i] + \beta_t[T_{1i}] + \beta_t[T_{2i}]
+\end{equation}
+
+The model $\theta_i$ is modeled as a logit function (Equation~\ref{eq:ordinal_model_logit}) between pairwise topics $T_{1i}$ and $T_{2i}$, which we control for the specific survey instrument $C_i$. We also control for the order for which participants complete the survey in the QS and LS conditions, denoted as $O_i$ and if so, if the participants was already aligned in a prior condition, $P_i$. The latter two experiment variable help control for potential learning effects since the two survey only differ in the number of provided budgets.
+
+We applied a hiarchical approach to model these experimental variables with a non-centered parameterization~\cite{mcelreath2018statistical}. The hierarchical approach allows partial polling across different pairwise comparisons (e.g., considering how the participants consider the same pair of topics), while preventing overfitting. With so many experimental variables to model under this setup, we applied a non-centered parameterization allows the model to learn the distribution of the parameters from the data rather than being overly constrained by the priors~\cite{mcelreath2018statistical}. This yields more robust inferences, improves sampling efficiency and stability of the model.
+
+This means that for each experimental variable, it follows Equation~\ref{eq:generic_non_center_hyper} where the different possible values of the variable are modeled as a normal distribution with mean $\mu_x$ and standard deviation $\sigma_x$.
+
+\begin{equation}
+    \label{eq:generic_non_center_hyper}
+    x_i = \mu_x + \sigma_x \cdot \eta_i, \quad \eta_i \sim \mathcal{U}(0,1)
+\end{equation}
+
+Each sigma is drawn from a normal distribution with different hyperpriors for each variable. For example, $C_i$ which represents different experiment condition's survey instrument follow the following model:
+
+\begin{align}
+    \label{eq:generic_non_center_hyper_C}
+    \beta_c[c_i] = \beta_a + \sigma_c \cdot \eta[c_i]\\
+    \quad \sigma_c \sim \mathcal{U}(0,1)\\
+    \quad \beta_a \sim \mathcal{N}(0, 0.5)\\
+    \quad \eta[c_i] \sim \mathcal{N}(0, 1)
+\end{align}
+
+The rest of the experimental variables follows the same structure, with the only difference in the hyperprior distribution $\mu_x$. For example, the topics $T_{1i}$ and $T_{2i}$ has a hyperprior of $\mathcal{N}(0, 0.25)$, while the rest of the experimental variables have a hyperprior of $\mathcal{N}(0, 0.5)$. 
