@@ -46,16 +46,18 @@ After the study, participants have a chance to read about the study's real purpo
 
 \subsection{Quantitative Measures: Ordinal and Interval Measures}
 \label{sec:quantitative_measures}
+
+
 In the prior studies, the authors used cosine similiarity to measure the alignment between the participants' preferences and their behaviors. However, this measure while useful in tackling high-dimensional data, it risks errors in interpretation. For example, an alignment deemed high by cosine similarity could be due to a large difference in the angle between two vectors with completely aligned rankings compared to a low cosine similarity value that could be due to a small difference in the angle between two vectors with completely unaligned rankings. Based on prior literature in evaluating the effectiveness of CSS, many relied on seperate evaluations of both rankings and intervals between options to evaluate.
 
 In this study, we constructed two Bayesian model to evaluate both ordinal and interval measures of participants' survey results and behaviors.
 
+
+
 \subsubsection{Pairwise Ordinal Measures}
 \label{sec:ordinal_measures}
-
-
-
-
+\input{content/2.1_ordinal_model.tex}
 
 \subsubsection{Interval Measures}
 \label{sec:interval_measures}
+\input{content/2.2_intensity_model.tex}
