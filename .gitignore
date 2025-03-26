@@ -11,4 +11,6 @@ main.pdf
 *.bbl 
 *.blg 
 *.synctex.gz
-chi25-1098.pdf
+*.fdb_latexmk
+*.fls
+local/*
