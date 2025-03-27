@@ -30,10 +30,6 @@ UQS's isolates the effect of budget constraints while LS isolates the effect of 
 
 To match the expressiveness of 5-point Likert scales, we allocated 2 credits per option, allowing participants to express moderate intensity in either direction. With 9 options, this yields 18 credits for the LS18 condition. We then scaled budgets using $O(K)$, $O(K^{1.5})$, and $O(K^2)$ to create LS18, LS54, and LS162, respectively—for example, $2 \times 9^{1.5}=54$ in LS54. This isolates the effect of budget constraints under a linear cost structure.
 
-% The UQS condition , while the LS conditions isolate the effect of budget constraints. Together, these conditions allow for a direct comparison of cost mechanisms in preference elicitation. As mentioned in~\Cref{sec:related_works_force_choice}, QS with linear cost function is slightly different then CSS where participants do not need to allocate all their provided credits, however, that effectively equals to an additional ``no response'' option on CSS, thus, here we denote these variations as CSS. 
-
-
-
 \subsubsection{Survey content}
 The study frames the survey as a public resource allotment task, where participants express preferences across 9 societal issues such as education, environment, or health. Participants would express their degree of preferences in number of votes, positive or negatively under the mechanism of UQS or LS.
 
@@ -68,13 +64,50 @@ After the survey, participants completed a filler task to prevent direct associa
 \subsubsection{Debrief, and Compensation}
 After the study, participants have a chance to read about the study's real purpose on the debrief page. Participants were compensated with \$1.50 for their time, and they were informed that they would receive an additional \$0.50 if they completed the study.
 
+\subsubsection{Integrating prior data}
+\citet{chengCanShowWhat2021} was the first study to evaluate the effectiveness of QS in relation to human behavior, offering an open dataset and open-source software that we replicated and extended. Their dataset contains 219 MTurk participants: 56 completed a Likert scale survey, 107 completed the QS36 survey, 108 completed QS108, and 111 completed QS324.
+
+To faciliate our analysis, we differentiate between the number of votes allocated to each option (used in the original QS analysis) and the total credits spent on each option, which reflects the actual cost incurred under the quadratic cost function. To make this distinction clear, we refer to the credit-spent measures as QSC36, QSC108, and QSC324, corresponding to the cost-based modeling of QS36, QS108, and QS324 conditions.
+
+Altogether, this study compares the elicited preferences from QS (vote-based), QSC (cost-based), LS (linear cost), UQS (QS without budget constraints), and Likert scale surveys, using participants' actual donation behavior as a behavioral baseline. These conditions are summarized in~\Cref{tbl:experiment_cond}.
+
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{@{}lllp{9cm}@{}}
+        \toprule
+        \textbf{Condition} & \textbf{Budget} & \textbf{Cost Function} & \textbf{Description} \\
+        \midrule
+        Likert & – & – & A 5-point traditional ordinal-scale survey. \\ 
+        \midrule
+        Donation & – & – & Incentive-compatible donation task used as behavioral benchmark for validating expressed preferences. \\
+        \midrule
+        QS36   & 36   & Quadratic & \multirow{3}{9cm}{QS conditions with three different budgets ($O(K)$, $O(K^{1.5})$, $O(K^2)$). Participants expressed preferences by allocating votes, where the cost of each vote increased quadratically, deducted from the budget.} \\
+        QS108  & 108  & Quadratic & \\
+        QS324  & 324  & Quadratic & \\
+        \midrule
+        QSC36  & 36   & Quadratic & \multirow{3}{9cm}{Credits that participants contributed per option. Using the results from QS, QSC reflects the actual cost incurred per option to reflect perceived intensity of preference and explore alignment with donation outcomes.} \\
+        QSC108 & 108  & Quadratic & \\
+        QSC324 & 324  & Quadratic & \\
+        \midrule
+        LS18   & 18   & Linear    & \multirow{3}{9cm}{Linear-cost versions of QS with budgets scaled as $O(K)$, $O(K^{1.5})$, and $O(K^2)$. Participants expressed preferences by allocating votes, where the cost of each vote increased linearly, deducted from the budget.} \\
+        LS54   & 54   & Linear    & \\
+        LS162  & 162  & Linear    & \\
+        \midrule
+        UQS    & Unlimited & Quadratic & QS without a budget where participants expressed preferences by allocating votes, where the cost of each vote increased quadratically but there is not budget that they ahere to. \\
+        \bottomrule
+    \end{tabular}
+    \caption{Summary of experimental and behavioral conditions, their cost structures, budget levels, and modeling purposes.}
+    \label{tbl:experiment_cond}
+\end{table}
+
 \subsection{Quantitative Measures: Ordinal and Interval Measures}
 \label{sec:quantitative_measures}
 Two prior empirical studies compared elicited survey responses with behavioral outcomes, such as donation~\cite{chengCanShowWhat2021,cavaille2024cares} or letter length~\cite{cavaille2024cares}, as proxies for individual preferences. ~\citet{chengCanShowWhat2021} employed a Bayesian model to compute cosine similarity, measuring the alignment between participants' stated preferences and observed behaviors. ~\citet{cavaille2024cares} used linear regression to estimate the differences between the two.
 
 While cosine similarity is useful for high-dimensional data, it presents interpretative challenges. For example, high alignment might result from large angular differences between vectors with identical rankings, while low alignment could stem from small angular differences between completely misaligned rankings. Linear regression, on the other hand, primarily captures correlations rather than causal relationships, limiting its explanatory power. Additionally, since each behavioral measure (e.g., donation, letter writing) represents a distinct task, it is difficult to compare relative preferences across options within the same participant.
 
-Thus, in this study, we draw from prior literature when comparing multi-option survey instruments in breaking down and evaluating QS's ability to elicit the ordinal and interval scales seperately~\cite{collewetPreferenceEstimationPoint2023}. We construct Bayesian models for both analysis considering its transparent nature for interpretatinf posterior distributions beyond binary thresholds~\cite{mcelreath2018statistical, kay2016researcher}. We compared 5 different conditions summarized in~\Cref{tbl:experiment_cond} and describe the models in the following subsections.
+Thus, in this study, we draw from prior literature when comparing multi-option survey instruments in breaking down and evaluating QS's ability to elicit the ordinal and interval scales seperately~\cite{collewetPreferenceEstimationPoint2023}. We construct Bayesian models for both analysis considering its transparent nature for interpretatinf posterior distributions beyond binary thresholds~\cite{mcelreath2018statistical, kay2016researcher}. We compared the 5 different conditions and describe the models in the following subsections.
 
 
 
