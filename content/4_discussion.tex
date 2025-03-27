@@ -1,17 +1,17 @@
 \section{Discussion and Future Work}
 \label{sec:discussion}
-In this section, we answer our research questions and discuss our interpretation of this result. We then highlight recommendations to practitioners using QS for collective decision making and highlight future directions for QS research.
+In this section, we address our research questions, interpret our findings, and provide recommendations for practitioners, along with outlining directions for future research.
 
 \subsection{QS's effectiveness and its dual components}
-In this study, we aim to examines how effectively QS captures participant preferences compared to Likert scale surveys at a pairwise level (RQ1) and understand whether QS requires both the quadratic cost function and a fixed budget to make it effective (RQ2). Our dual analysis comparing QS (votes and credit spent), Likert, UQS, and LS further supports that QS exhibits superior performance in preference elicitation compared to Likert Scale Surveys. Within ordinal preference prediction, QS shows a statistically significant but modest advantage over Likert scales, even QS with small budget. For preference intensity, QS performs better Likert scale surveys as the magnitude of preference differentials increases between options. Altogether, we demonstrated that QS better Likert overall should the survey designer aim to capture accurate individual preferences across multiple options under resource constraint scenarios for collective decision making.
+Our study aimed to examine how effectively QS capture participant preferences at a pairwise level compared to Likert scale surveys (RQ1), and whether both the quadratic cost function and a fixed budget are necessary for QS's effectiveness (RQ2). Our comparative analysis of QS (both vote-based and cost-based), Likert scale surveys, UQS, and LS indicates that QS outperforms Likert scales in eliciting ordinal preference rankings, with a statistically significant but modest advantage observed even for QS with a small budget (QS36). Moreover, as the magnitude of pairwise preference differences increases, QS more accurately reflects these intensities. In summary, our findings explicitly suggest that when the objective is to capture accurate individual preferences across multiple options under resource constraints, the QS mechanism, with its quadratic cost function and fixed budget, offers a superior alternative to traditional Likert scale surveys.
 
-With the added experiment in this study, our empirical findings demonstrates both the quadratic cost function and budget constraint constitute the effectiveness of QS mechanism. The removal of either component (as implemented in Unlimited QS or Linear Survey) results in diminished performance as discussed in~\Cref{sec:result_2}. Pragmatically, this result indicates that rather than applying LS for reduced cognitive load and ease of completion, further research should guide developers in designing systems that aids QS completion. Scientifically, the result raised our interest to understand why LS did not work as well.
+Our experiments further confirm that both the quadratic cost function and the budget constraint are required for QS to perform well. Removing either component (as in UQS or LS) results in diminished effectiveness discussed in~\Cref{sec:result_2}. Pragmatically, rather than adopting LS to reduce cognitive load, future research should focus on developing interfaces that facilitate QS completion. Scientifically, these results prompt further investigation into the psychological mechanisms underlying the lower performance of LS.
 
-% insert figure
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{content/image/Predicted_Donation_Diff_Interval.pdf}
     \caption{Comparison of preference elicitation methods: QS, LS, UQS, and Linear Survey.}
+    \Description{Comparison of preference elicitation methods: QS, LS, UQS, and Linear Survey.}
     \label{fig:comparison}
 \end{figure}
 
