@@ -4,7 +4,7 @@
 This section describes the experiment design. The study was approved by the university's Institutional Review Board (IRB). 
 
 \subsection{Participant Recruitment}
-This study recruited 202 Amazon Mechanical Turk (MTurk) participants using stratified sampling. The system screened participants based on their age, gender, household income, and education level to assure a balanced demographic within each experiment condition while randomly assigning participants to these conditions. This approach aimed to mitigate imbalanced participation demographics~\cite{redmilesHowWellMy2019}. We provide the demographic in Table X?
+This study recruited 202 Amazon Mechanical Turk (MTurk) participants using stratified sampling. The system screened participants based on their age, gender, household income, and education level to assure a balanced demographic within each experiment condition while randomly assigning participants to these conditions. This approach aimed to mitigate imbalanced participation demographics~\cite{redmilesHowWellMy2019}.
 
 \begin{figure}[t]
     \centering
@@ -14,7 +14,7 @@ This study recruited 202 Amazon Mechanical Turk (MTurk) participants using strat
 \end{figure}
 
 \subsection{Experiment Design}
-To ensure comparable data with prior study~\cite{chengCanShowWhat2021}, this study followed the same between-subject experimental design and altered the open sourced software to create two more conditions, creating four new experimental data. Refer to prior studies for details on the procedure justification of the experiment. We highlight key procedures and alternations we made to the methodology below. Figure~\ref{fig:experiment} shows how our study fits into the prior work and the overall experiment flow.
+To ensure comparable data with prior study~\cite{chengCanShowWhat2021}, this study followed the same between-subject experimental design and altered the open sourced software to create two more conditions, creating four new experimental data. We highlight key procedures and alternations we made to the original methodology and redirect choice of surveying method, and the choice of donation as a task, to prior studies for justification. Figure~\ref{fig:experiment} shows how our study fits into the prior work and the overall experiment flow.
 
 \paragraph{Additional Experimental Conditions}
 We added four additional experimental conditions presented as two groups, Unlimited QS or the Constant Sum Survey (CSS) group. The CSS group was further divided into three conditions with different budgets:
@@ -26,17 +26,39 @@ We added four additional experimental conditions presented as two groups, Unlimi
     \item Constant Sum Survey with 162 Credits (CS162): A high-budget condition assessing whether increased budgets improve alignment.
 \end{itemize}
 
-The UQS condition isolates the effect of quadratic costs, while the CSS conditions isolate the effect of budget constraints. Together, these conditions allow for a direct comparison of cost mechanisms in preference elicitation. As mentioned in~\Cref{sec:related_works_css}, QS with linear cost function is slightly different then CSS where participants do not need to allocate all their provided credits, however, that effectively equals to an additional ``no response'' option on CSS, thus, here we denote these variations as CSS.
+The choice of the three budget follow prior work in assuring participants's ability to express the exact equivilent response in Likert scale surveys, which reflects $O(K)$, $O(K^{1.5})$, and $O(K^2)$, where $K$ is $9$ options and the possible response mapping to Likert is $\pm2$, hence, for example, $O(K^1.5)$ is $2\times27$ credits.
 
-Participants assigned to the CSS completed two randomly selected CSS conditions. <report completion time>.
+The UQS condition isolates the effect of quadratic costs, while the CSS conditions isolate the effect of budget constraints. Together, these conditions allow for a direct comparison of cost mechanisms in preference elicitation. As mentioned in~\Cref{sec:related_works_force_choice}, QS with linear cost function is slightly different then CSS where participants do not need to allocate all their provided credits, however, that effectively equals to an additional ``no response'' option on CSS, thus, here we denote these variations as CSS.
+
+Participants assigned to the CSS completed two randomly selected CSS conditions.
 
 \subsubsection{Survey content}
-The study frames the survey as a public resource allotment task, where participants express preferences across 9 societal issues such as education, environment, or health~\footnote{See supplementary material for the full survey}. Participants would express their degree of preferences in number of votes, positive or negatively under the mechanism of UQS or CSS.
+The study frames the survey as a public resource allotment task, where participants express preferences across 9 societal issues such as education, environment, or health. Participants would express their degree of preferences in number of votes, positive or negatively under the mechanism of UQS or CSS.
 
 \subsubsection{Surveying process and interface}
-Participants in both groups were first introduced to the survey and how to use it via a video tutorial that we recorded. To assure their understanding of these mechanism, participants were asked to complete a quiz with 5 multiple-choice questions. Participants were required to answer at least 3 questions correctly to continue with the study. We altered the questions based on the survey mechanisms.
+Participants in both groups were first introduced to the survey and how to use it via a video tutorial that we recorded. To assure their understanding of these mechanism, participants were asked to complete a quiz with 5 multiple-choice questions. Participants were required to answer at least 3 questions correctly to continue with the study. We altered the questions based on the survey mechanisms. The interface for both UQS and LS are shown in~\Cref{fig:extended_interface}.
 
-The number of credits for the CSS mirrors those in the prior study since CSS literature does not provide a clear guideline on how to set the budget with the conversion that the budget should be 100. The interface for both studies are shown in~\Cref{fig:extended_interface}.
+% create a side by side figure using subfigure
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{content/image/linear.png}
+        \caption{Linear Survey (QS) Interface, each additional vote is $1$ credit}
+        \label{fig:qs_interface}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{content/image/uqs.png}
+        \caption{Unlimited Quadratic Survey (UQS) Interface, each additional vote is $n^2$ credits but does not have a budget constraint}
+        \label{fig:css_interface}
+    \end{subfigure}
+    \caption{Survey interfaces for the two additional conditions. Both images are screenshots of the playground for participants to experience the surveying method before completing the actual survey tasks on societal issues.}
+    \label{fig:extended_interface}
+\end{figure}
+
 
 \subsubsection{Filler task and donation}
 After the survey, participants completed a filler task to prevent direct association with the issues and the charities listed on the donation task page. Participants 

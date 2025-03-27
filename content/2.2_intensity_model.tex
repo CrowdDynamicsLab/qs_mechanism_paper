@@ -2,7 +2,7 @@ Following the ordinal comparisons,~\textbf{intensity model} assesses how effecti
 
 \paragraph{Aligning the variables} Constructing a intensity model to compare the different instruments is not trivial, since elicited values are continuous and others are ordinal. We took a conservative approach and model likert scale and QS votes as ordinal values, especually when it is not clear whether participants considering the varying costs associated with different votes for the latter. In contrast, LS reflects incremental additions on a scale, and UQS does not have a limit; hence, both are treated as continuous. Rather than solely using final outcomes from each instrument, we also incorporated the cost of votes for QSs, assuming each dollar increment shares the same ``monetary'' value.
 
-For instruments with bounded, continous budgets (e.g., \textit{QSC\_36}, \textit{QSC\_108}, \textit{QSC\_324}) and linear surveys (\textit{LS\_36}, \textit{LS\_108}, \textit{LS\_324}), we project vote differences onto the $[0,1]$ interval. Since UQS lacks fixed bounds, we normalize the vote difference $V$ between two options $t_1$ and $t_2$ over the $k'$ options that the participant voted on:
+For instruments with bounded, continous budgets (e.g., \textit{QSC\_36}, \textit{QSC\_108}, \textit{QSC\_324}) and linear surveys (\textit{LS\_18}, \textit{LS\_54}, \textit{LS\_162}), we project vote differences onto the $[0,1]$ interval. Since UQS lacks fixed bounds, we normalize the vote difference $V$ between two options $t_1$ and $t_2$ over the $k'$ options that the participant voted on:
 
 \begin{equation}
     \text{Vote\_diff}_{UQS} 
