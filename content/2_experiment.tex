@@ -17,23 +17,25 @@ This study recruited 202 Amazon Mechanical Turk (MTurk) participants using strat
 To ensure comparable data with prior study~\cite{chengCanShowWhat2021}, this study followed the same between-subject experimental design and altered the open sourced software to create two more conditions, creating four new experimental data. We highlight key procedures and alternations we made to the original methodology and redirect choice of surveying method, and the choice of donation as a task, to prior studies for justification. Figure~\ref{fig:experiment} shows how our study fits into the prior work and the overall experiment flow.
 
 \paragraph{Additional Experimental Conditions}
-We added four additional experimental conditions presented as two groups, Unlimited QS or the Constant Sum Survey (CSS) group. The CSS group was further divided into three conditions with different budgets:
+We added four additional experimental conditions presented as two groups, UQS or the LS. The LS group was further divided into three conditions with different budgets:
 
 \begin{itemize}
     \item Unlimited QS (UQS): Participants experience quadratic costs without budget constraints, isolating the effect of cost scaling.
-    \item Constant Sum Survey with 18 Credits (CS18): A small-budget linear-cost condition testing the effect of budget constraints.
-    \item Constant Sum Survey with 54 Credits (CS54): A medium-budget version allowing greater expressiveness.
-    \item Constant Sum Survey with 162 Credits (CS162): A high-budget condition assessing whether increased budgets improve alignment.
+    \item Linear Survey with 18 Credits (LS18): A small-budget linear-cost condition testing the effect of budget constraints.
+    \item Linear Survey with 54 Credits (LS54): A medium-budget version allowing greater expressiveness.
+    \item Linear Survey with 162 Credits (LS162): A high-budget condition assessing whether increased budgets improve alignment.
 \end{itemize}
 
-The choice of the three budget follow prior work in assuring participants's ability to express the exact equivilent response in Likert scale surveys, which reflects $O(K)$, $O(K^{1.5})$, and $O(K^2)$, where $K$ is $9$ options and the possible response mapping to Likert is $\pm2$, hence, for example, $O(K^1.5)$ is $2\times27$ credits.
+UQS's isolates the effect of budget constraints while LS isolates the effect of the quadratic cost function cost function. Participants assigned to the LS condition completed two randomly selected LS conditions.
 
-The UQS condition isolates the effect of quadratic costs, while the CSS conditions isolate the effect of budget constraints. Together, these conditions allow for a direct comparison of cost mechanisms in preference elicitation. As mentioned in~\Cref{sec:related_works_force_choice}, QS with linear cost function is slightly different then CSS where participants do not need to allocate all their provided credits, however, that effectively equals to an additional ``no response'' option on CSS, thus, here we denote these variations as CSS.
+To match the expressiveness of 5-point Likert scales, we allocated 2 credits per option, allowing participants to express moderate intensity in either direction. With 9 options, this yields 18 credits for the LS18 condition. We then scaled budgets using $O(K)$, $O(K^{1.5})$, and $O(K^2)$ to create LS18, LS54, and LS162, respectively—for example, $2 \times 9^{1.5}=54$ in LS54. This isolates the effect of budget constraints under a linear cost structure.
 
-Participants assigned to the CSS completed two randomly selected CSS conditions.
+% The UQS condition , while the LS conditions isolate the effect of budget constraints. Together, these conditions allow for a direct comparison of cost mechanisms in preference elicitation. As mentioned in~\Cref{sec:related_works_force_choice}, QS with linear cost function is slightly different then CSS where participants do not need to allocate all their provided credits, however, that effectively equals to an additional ``no response'' option on CSS, thus, here we denote these variations as CSS. 
+
+
 
 \subsubsection{Survey content}
-The study frames the survey as a public resource allotment task, where participants express preferences across 9 societal issues such as education, environment, or health. Participants would express their degree of preferences in number of votes, positive or negatively under the mechanism of UQS or CSS.
+The study frames the survey as a public resource allotment task, where participants express preferences across 9 societal issues such as education, environment, or health. Participants would express their degree of preferences in number of votes, positive or negatively under the mechanism of UQS or LS.
 
 \subsubsection{Surveying process and interface}
 Participants in both groups were first introduced to the survey and how to use it via a video tutorial that we recorded. To assure their understanding of these mechanism, participants were asked to complete a quiz with 5 multiple-choice questions. Participants were required to answer at least 3 questions correctly to continue with the study. We altered the questions based on the survey mechanisms. The interface for both UQS and LS are shown in~\Cref{fig:extended_interface}.
@@ -72,7 +74,9 @@ Two prior empirical studies compared elicited survey responses with behavioral o
 
 While cosine similarity is useful for high-dimensional data, it presents interpretative challenges. For example, high alignment might result from large angular differences between vectors with identical rankings, while low alignment could stem from small angular differences between completely misaligned rankings. Linear regression, on the other hand, primarily captures correlations rather than causal relationships, limiting its explanatory power. Additionally, since each behavioral measure (e.g., donation, letter writing) represents a distinct task, it is difficult to compare relative preferences across options within the same participant.
 
-Thus, in this study, we draw from prior literature when comparing multi-option survey instruments in breaking down and evaluating QS's ability to elicit the ordinal and interval scales seperately~\cite{collewetPreferenceEstimationPoint2023}. We construct Bayesian models for both analysis considering its transparent nature for interpretatinf posterior distributions beyond binary thresholds~\cite{mcelreath2018statistical, kay2016researcher}. We describe the models in the following subsections.
+Thus, in this study, we draw from prior literature when comparing multi-option survey instruments in breaking down and evaluating QS's ability to elicit the ordinal and interval scales seperately~\cite{collewetPreferenceEstimationPoint2023}. We construct Bayesian models for both analysis considering its transparent nature for interpretatinf posterior distributions beyond binary thresholds~\cite{mcelreath2018statistical, kay2016researcher}. We compared 5 different conditions summarized in~\Cref{tbl:experiment_cond} and describe the models in the following subsections.
+
+
 
 \subsubsection{Pairwise Ordinal Measures}
 \label{sec:ordinal_measures}
