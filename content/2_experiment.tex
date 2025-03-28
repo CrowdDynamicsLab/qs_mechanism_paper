@@ -1,10 +1,9 @@
 \section{Experiment Design}
 \label{sec:experiment}
-
-This section describes the experiment design. The study was approved by the university's Institutional Review Board (IRB). 
+This section outlines the experimental design, adapted from~\citet{chengCanShowWhat2021}, and approved by the university's Institutional Review Board (IRB).
 
 \subsection{Participant Recruitment}
-This study recruited 202 Amazon Mechanical Turk (MTurk) participants using stratified sampling. The system screened participants based on their age, gender, household income, and education level to assure a balanced demographic within each experiment condition while randomly assigning participants to these conditions. This approach aimed to mitigate imbalanced participation demographics~\cite{redmilesHowWellMy2019}.
+The study recruited 202 Amazon Mechanical Turk (MTurk) participants using stratified sampling. We screened participants by age, gender, income, and education to ensure demographic balance and randomly assigned them to conditions. This approach aimed to mitigate demographic imbalances in participation~\cite{redmilesHowWellMy2019}.
 
 \begin{figure}[t]
     \centering
@@ -14,21 +13,18 @@ This study recruited 202 Amazon Mechanical Turk (MTurk) participants using strat
 \end{figure}
 
 \subsection{Experiment Design}
-To ensure comparable data with prior study~\cite{chengCanShowWhat2021}, this study followed the same between-subject experimental design and altered the open sourced software to create two more conditions, creating four new experimental data. We highlight key procedures and alternations we made to the original methodology and redirect choice of surveying method, and the choice of donation as a task, to prior studies for justification. Figure~\ref{fig:experiment} shows how our study fits into the prior work and the overall experiment flow.
+To ensure comparability with the prior study~\cite{chengCanShowWhat2021}, we followed the same between-subject experimental design and modified open-source software to introduce two new condition types, yielding four additional experimental datasets. The subsections below highlight key procedural modifications, while the choice of survey methods and the donation task are justified by prior research. Figure~\ref{fig:experiment} illustrates how our study fits within the broader experimental flow established by previous work.
 
 \paragraph{Additional Experimental Conditions}
-We added four additional experimental conditions presented as two groups, UQS or the LS. The LS group was further divided into three conditions with different budgets:
+We introduced four new experimental conditions, grouped into two categories: UQS and LS. In the UQS condition, we removed the budget constraint to isolate the effect of the quadratic cost function. In the LS conditions, we replaced the quadratic cost function with a linear one and further subdivided these into three levels based on budget size:
 
-\begin{itemize}
-    \item Unlimited QS (UQS): Participants experience quadratic costs without budget constraints, isolating the effect of cost scaling.
-    \item Linear Survey with 18 Credits (LS18): A small-budget linear-cost condition testing the effect of budget constraints.
-    \item Linear Survey with 54 Credits (LS54): A medium-budget version allowing greater expressiveness.
-    \item Linear Survey with 162 Credits (LS162): A high-budget condition assessing whether increased budgets improve alignment.
+\begin{itemize} 
+    \item LS18: A small-budget Linear Survey with 18 credits
+    \item LS54: A medium-budget Linear Survey with 54 credits
+    \item LS162: A large-budget Linear Survey with 162 credits
 \end{itemize}
 
-UQS's isolates the effect of budget constraints while LS isolates the effect of the quadratic cost function cost function. Participants assigned to the LS condition completed two randomly selected LS conditions.
-
-To match the expressiveness of 5-point Likert scales, we allocated 2 credits per option, allowing participants to express moderate intensity in either direction. With 9 options, this yields 18 credits for the LS18 condition. We then scaled budgets using $O(K)$, $O(K^{1.5})$, and $O(K^2)$ to create LS18, LS54, and LS162, respectively—for example, $2 \times 9^{1.5}=54$ in LS54. This isolates the effect of budget constraints under a linear cost structure.
+Following prior work, we allocated two credits per option to match the expressiveness of a 5-point Likert scale, allowing participants to indicate moderate intensity in either direction. With nine options, this yielded 18 credits for the LS18 condition. We then scaled the budgets using $O(K)$, $O(K^{1.5})$, and $O(K^2)$ to generate LS18, LS54, and LS162, respectively—for example, $2 \times 9^{1.5} = 54$ in LS54.
 
 \subsubsection{Survey content}
 The study frames the survey as a public resource allotment task, where participants express preferences across 9 societal issues such as education, environment, or health. Participants would express their degree of preferences in number of votes, positive or negatively under the mechanism of UQS or LS.
@@ -103,13 +99,11 @@ Altogether, this study compares the elicited preferences from QS (vote-based), Q
 
 \subsection{Quantitative Measures: Ordinal and Interval Measures}
 \label{sec:quantitative_measures}
-Two prior empirical studies compared elicited survey responses with behavioral outcomes, such as donation~\cite{chengCanShowWhat2021,cavaille2024cares} or letter length~\cite{cavaille2024cares}, as proxies for individual preferences. ~\citet{chengCanShowWhat2021} employed a Bayesian model to compute cosine similarity, measuring the alignment between participants' stated preferences and observed behaviors. ~\citet{cavaille2024cares} used linear regression to estimate the differences between the two.
+Two prior empirical studies compared elicited survey responses with behavioral outcomes—such as donation~\cite{chengCanShowWhat2021,cavaille2024cares} or letter length~\cite{cavaille2024cares}—as proxies for individual preferences. ~\citet{chengCanShowWhat2021} employed a Bayesian model to compute cosine similarity, which measures the alignment between participants' stated preferences and observed behaviors. ~\citet{cavaille2024cares} used linear regression to estimate the differences between stated preferences and behavioral outcomes.
 
-While cosine similarity is useful for high-dimensional data, it presents interpretative challenges. For example, high alignment might result from large angular differences between vectors with identical rankings, while low alignment could stem from small angular differences between completely misaligned rankings. Linear regression, on the other hand, primarily captures correlations rather than causal relationships, limiting its explanatory power. Additionally, since each behavioral measure (e.g., donation, letter writing) represents a distinct task, it is difficult to compare relative preferences across options within the same participant.
+While cosine similarity is useful for high-dimensional data, it poses interpretative challenges. For example, high alignment might result from large angular differences between vectors with identical rankings, whereas low alignment could stem from small angular differences between completely misaligned rankings. Linear regression, by contrast, primarily captures correlations rather than causal relationships, limiting its explanatory power. Additionally, since each behavioral measure (e.g., donation, letter writing) represents a distinct task, comparing relative preferences across options within the same participant is difficult.
 
-Thus, in this study, we draw from prior literature when comparing multi-option survey instruments in breaking down and evaluating QS's ability to elicit the ordinal and interval scales seperately~\cite{collewetPreferenceEstimationPoint2023}. We construct Bayesian models for both analysis considering its transparent nature for interpretatinf posterior distributions beyond binary thresholds~\cite{mcelreath2018statistical, kay2016researcher}. We compared the 5 different conditions and describe the models in the following subsections.
-
-
+Thus, in this study, we draw from prior literature to compare multi-option survey instruments by breaking down and evaluating QS’s ability to elicit ordinal and interval scales separately~\cite{collewetPreferenceEstimationPoint2023}. We construct Bayesian models for both analyses, considering their transparency in interpreting posterior distributions beyond binary thresholds~\cite{mcelreath2018statistical, kay2016researcher}. We compare five different conditions and describe the models in the following subsections.
 
 \subsubsection{Pairwise Ordinal Measures}
 \label{sec:ordinal_measures}
