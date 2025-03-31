@@ -27,10 +27,10 @@ We introduced four new experimental conditions, grouped into two categories: UQS
 Following prior work, we allocated two credits per option to match the expressiveness of a 5-point Likert scale, allowing participants to indicate moderate intensity in either direction. With nine options, this yielded 18 credits for the LS18 condition. We then scaled the budgets using $O(K)$, $O(K^{1.5})$, and $O(K^2)$ to generate LS18, LS54, and LS162, respectively—for example, $2 \times 9^{1.5} = 54$ in LS54.
 
 \subsubsection{Survey content}
-The study frames the survey as a public resource allotment task, where participants express preferences across 9 societal issues such as education, environment, or health. Participants would express their degree of preferences in number of votes, positive or negatively under the mechanism of UQS or LS.
+The study frames the survey as a public resource allotment task, where participants express preferences across 9 societal issues such as education, environment, or health. Participants would express their degree of preference in the number of votes, positive or negative, under the mechanism of UQS or LS.
 
 \subsubsection{Surveying process and interface}
-Participants in both groups were first introduced to the survey and how to use it via a video tutorial that we recorded. To assure their understanding of these mechanism, participants were asked to complete a quiz with 5 multiple-choice questions. Participants were required to answer at least 3 questions correctly to continue with the study. We altered the questions based on the survey mechanisms. The interface for both UQS and LS are shown in~\Cref{fig:extended_interface}.
+Participants in both groups were first introduced to the survey and how to use it via a video tutorial. To ensure their understanding of the survey mechanism, participants were asked to complete a quiz with 5 multiple-choice questions. Participants had to answer at least three questions correctly to continue the study. We altered the questions based on the survey mechanisms. The interface for both UQS and LS are shown in~\Cref{fig:extended_interface}.
 
 % create a side by side figure using subfigure
 
@@ -103,7 +103,7 @@ Two prior empirical studies compared elicited survey responses with behavioral o
 
 While cosine similarity is useful for high-dimensional data, it poses interpretative challenges. For example, high alignment might result from large angular differences between vectors with identical rankings, whereas low alignment could stem from small angular differences between completely misaligned rankings. Linear regression, by contrast, primarily captures correlations rather than causal relationships, limiting its explanatory power. Additionally, since each behavioral measure (e.g., donation, letter writing) represents a distinct task, comparing relative preferences across options within the same participant is difficult.
 
-Thus, in this study, we draw from prior literature to compare multi-option survey instruments by breaking down and evaluating QS’s ability to elicit ordinal and interval scales separately~\cite{collewetPreferenceEstimationPoint2023}. We construct Bayesian models for both analyses, considering their transparency in interpreting posterior distributions beyond binary thresholds~\cite{mcelreath2018statistical, kay2016researcher}. We compare five different conditions and describe the models in the following subsections.
+Thus, in this study, we draw from prior literature to compare multi-option survey instruments by breaking down and evaluating QS's ability to elicit ordinal and interval scales separately~\cite{collewetPreferenceEstimationPoint2023}. We construct Bayesian models for both analyses, considering their transparency in interpreting posterior distributions beyond binary thresholds~\cite{mcelreath2018statistical, kay2016researcher}. We compare five different conditions and describe the models in the following subsections.
 
 \subsubsection{Pairwise Ordinal Measures}
 \label{sec:ordinal_measures}

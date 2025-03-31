@@ -1,63 +1,87 @@
 \section{Discussion and Future Work}
 \label{sec:discussion}
-In this section, we address our research questions, interpret our findings, and provide recommendations for practitioners, along with outlining directions for future research.
+This section addresses our research questions, interprets the key findings, offers practical recommendations, and identifies areas for future exploration.
 
 \subsection{QS's effectiveness and its dual components}
-Our study aimed to examine how effectively QS capture participant preferences at a pairwise level compared to Likert scale surveys (RQ1), and whether both the quadratic cost function and a fixed budget are necessary for QS's effectiveness (RQ2). Our comparative analysis of QS (both vote-based and cost-based), Likert scale surveys, UQS, and LS indicates that QS outperforms Likert scales in eliciting ordinal preference rankings, with a statistically significant but modest advantage observed even for QS with a small budget (QS36). Moreover, as the magnitude of pairwise preference differences increases, QS more accurately reflects these intensities. In summary, our findings explicitly suggest that when the objective is to capture accurate individual preferences across multiple options under resource constraints, the QS mechanism, with its quadratic cost function and fixed budget, offers a superior alternative to traditional Likert scale surveys.
+We examined QS's effectiveness in capturing pairwise preferences compared to Likert scales (RQ1) and tested whether the quadratic cost function and fixed budget constraint are both necessary (RQ2). Our comparative analysis demonstrates that QS (vote-based and cost-based), with its quadratic cost function and fixed budget, consistently outperforms traditional Likert scales in capturing pairwise ordinal rankings and accurately reflecting preference intervals, particularly when resource are limited. Moreover, as the preference interval between two options increases, QS progressively outperforms other methods in accurately capturing the corresponding intensities.
 
-Our experiments further confirm that both the quadratic cost function and the budget constraint are required for QS to perform well. Removing either component (as in UQS or LS) results in diminished effectiveness discussed in~\Cref{sec:result_2}. Pragmatically, rather than adopting LS to reduce cognitive load, future research should focus on developing interfaces that facilitate QS completion. Scientifically, these results prompt further investigation into the psychological mechanisms underlying the lower performance of LS.
+Our experiments confirm that both the quadratic cost function and the fixed budget constraint are essential to QS's effectiveness. Removing either component, as observed in UQS and LS, significantly diminishes QS's performance (see~\Cref{sec:result_2}). Pragmatically, QS research should emphasize interface designs (e.g.,~\cite{chengOrganizeThenVote2025}) that facilitate participant completion, rather than simplifying QS itself. Scientifically, exploring why LS underperforms QS is an important question we address in the following sections.
+
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{content/image/Predicted_Donation_Diff_Interval.pdf}
-    \caption{Comparison of preference elicitation methods: QS, LS, UQS, and Linear Survey.}
-    \Description{Comparison of preference elicitation methods: QS, LS, UQS, and Linear Survey.}
+    \includegraphics[width=\textwidth]{content/image/posterior_predictive_cumulative.pdf}
+    \caption{Differences between survey-reported preferences and actual donation behaviors across survey tools. Dots represent mean normalized differences, with bars showing the 94\% Highest Density Interval (HDI). The horizontal line at 0 indicates perfect alignment; values above represent overstated preferences. QS Vote and QS Credit consistently show close alignment even as actual behavioral differences increase, while Likert, LS, and Unlimited QS increasingly deviate at larger differences. \textbf{Takeaway}: QS methods (Vote and Credit) better capture participants' actual preference intervals, especially as intensity differences grow.}
     \label{fig:comparison}
 \end{figure}
 
+\subsection{Mechanisms underlying QS's effectiveness}
+This subsection explores the plausible mechanisms underlying QS's effectiveness. Given our findings align with prior QS and Likert-scale research~\cite{chengCanShowWhat2021}, we focus on two mechanisms: (1) how the quadratic cost function aligns preferences with behavior, and (2) how budget constraints shape expression. We examine these mechanisms using LS and UQS results.
 
-\subsection{Distortion in survey's `preference units'}
-The goal of QS aims to identify nuances among multiple options, which reflected the aim to elicit quantified differences between options. Among options, preference differences lies strong between some pairs and less among others. As discussed in~\Cref{sec:interval_measures}, QS credits and votes remain reflective of individual's behavior regardless of preference strength.~\Cref{fig:comparison} plots how well different tools predict participant behaviors as preference differences increases. LS, regardless of credit size, reflects that the stronger a participant treat a pairwise option across all options, the more LS response underestimates this preference.
+\subsubsection{Quadratic cost function corrects perception distortion and bias in response strengths}
+As discussed in~\Cref{sec:interval_measures}, QS credits and votes remain aligned with participants' revealed behaviors across varying levels of preference strength. In contrast, model results shows more LS and Likert survey overestimation as the pairwise donation widens (see~\Cref{fig:comparison}). We identify two plausible explanations.
 
-Two plausible explanations lies in distortion in how individuals perceive each additional `unit preference,' which we define as the additional preference interval the participant expressed (i.e., an additional vote, or selecting the next preference interval). The first can be a participants experiencing simple diminishing returns~\cite{mankiwPrinciplesEconomics2018} like in economics, for which when adding votes, participants would add less than the amount as they felt that additional votes creates diminishing returns, hence the underestimation. 
+\paragraph{Unequal~\textit{perceived} `preference units'}
+We define a 'preference unit' as the incremental amount a participant uses to express additional preference (e.g., an extra vote, extra credits spent, or an extra level on a Likert scale). Our results indicate that LS participants perceive successive preference units as representing smaller incremental differences in strength. This pattern aligns with the Law of Diminishing Marginal Utility in economics~\cite{gossen1983laws, kahnemanProspectTheoryAnalysis1979}, which states that each additional unit of consumption yields less utility than the one before. Thus, survey respondents allocate more preference units to express their intended preferences.
 
-Another explanation echos the Weber-Fechner law~\cite{}. The former states that the `just noticeable difference' between two stimuli is proportional to the baseline intensity of the stimulus. And the latter states that the perceived intensity of a stimulus grows logarithmically. What we observed here is that participants responding to LS exhibited less `perceived' preference per unit as the preference difference increases between two options. This perceived difference adds up to create the illusion that the survey participant had expressed enough votes as their presented preference. Early CSS validating by~\citet{dudekValidityPointAssignmentProcedure1957} cautions that participants may not recognize the nonlinear relationship between point-assignment, leading them to misjudge how much their numerical input actually reflects their intended intensity. Conversely, QS forces each additional vote cost to grow quadratically. This approach seems to corrected the underestimation since each additional `preference unit' is more costly, correcting the perceived preferences individuals experienced.
+Even if participants do not explicitly interpret preference units in monetary terms, psychophysics offers relevant insights. According to the Weber-Fechner law~\cite{dehaeneNeuralBasisWeber2003, kruegerReconcilingFechnerStevens1989}, the just noticeable difference between stimuli is proportional to the baseline stimulus intensity. As the marginal difference between options appears to shrink, participants may feel their previous input was insufficient and they will overcorrect. Early CSS validation by~\citet{dudekValidityPointAssignmentProcedure1957} cautioned that participants may misjudge how well their numerical input reflects their subjective attitudes. Interestingly, Fechner's law~\cite{kruegerReconcilingFechnerStevens1989} describes perception as following a logarithmic curve, which conceptually aligns with QS's quadratic structure. In QS, the rising cost of additional votes mirrors diminishing perceptual increments, helping to mitigate bias or overestimation in expressed preferences. Each additional vote imposes a quadratic cost that cannot be reduced, potentially reducing distortions stemming from participants' perceptual biases.
 
-Since QS credits and votes are inter-related, we believe that this correction in distortion helped QS votes to reflect reasonably well the presented preferences of the individual, albiet the credits performs slightly better without statistical differences as shown in Figure X.
+\paragraph{Extreme response bias}
+Another plausible explanation involves the expansive decision space offered by LS. Because votes incur a linear cost, participants face a wide array of allocation choices (e.g., 163 choices in LS162). Psychology literature suggests that cognitive overload leads to satisficing~\cite{schwartzMaximizingSatisficingHappiness2002, iyengarWhenChoiceDemotivating2000}, where individuals settle for sufficient rather than optimal choices by relying on heuristics. Rather than carefully weighing differences between options, participants may resort to exaggerated responses to signal distinctions between choices. This effect is amplified by the linear cost structure, which lets individuals redistribute credits freely, since each vote carries equal weight. As the LS budget increases, the space of possible allocations grows rapidly. Consider LS18 and QS324, which both permit up to 18 votes~\footnote{Assuming all credits are allotted to a single option, 324 credits allows at most 18 votes which is equivalent to LS18.}; however, in QS, casting 18 votes incurs a significantly higher cost. The quadratic cost function imposes increasing costs for each additional vote, sharply narrowing the decision space and discouraging exaggerated responses.
 
-\subsection{Choice overload on survey options}
-In terms of ordinal difference, with think that the total budget creating too many options is a plausible explanation of why LS and UQS underperforms Likert and QS.
+\begin{figure}[ht]
+  \centering
 
-The total budget serves two purposes. Other than setting the unit simulus we discussed in the previous subsection, the total budget also limits the number of plausible selections for each survey option. Thus, LS18 means that a participant can consider 18 plausible selections for each option, equivalent to QS324. This number of choices increases drastically as the LS credits increases.
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{content/image/cumulative_distribution_credit_usage.pdf}
+    \caption{
+    This plot shows the percentage of participants who fully utilized their available credits across different budget levels. As the budget increases, the cumulative usage drops off more steeply.
+    \textbf{Takeaway:} Higher budgets lead to earlier and more widespread underutilization of credits across participants.
+    }
+    \label{fig:credit_usage_descending}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{content/image/uqs_credit_usage_distribution_logbins.pdf}
+    \caption{The credit usage distribution for UQS participants. The credit usage follows a long tail. Without an anchor, less than half of participants spend more than 38 credits across 9 options. \textbf{Takeaway:} Participants did not effort in utilizing as much credit to differentiate their preferences.}
+    \label{fig:uqs_usage}
+  \end{minipage}
 
-The quadratic cost drastically reduces participant's decision space as they began allocating votes since the votes come at a quadratic cost. LS's linear cost maintained heightened vote options as participants complete the task. This increase in option likey introduced choice overload that nudged individual's to express satisficing behaviors~\cite{}. Thus, we see deteriorating ordinal behaviors in LS as credits increase.
-
-This abundance of credits in LS reflected by UQS credit usages, which we found a long tail of usage with half of the participants stop answering the survey after sprending 45 credits. This value reflects when a participants think that they have enough expression power to the options presented to them.
-
-Likert's 5-point scale likely limited participant's preference expression ability as the prior study discusses~\cite{chengCanShowWhat2021}.
-
-The complementary effects of preference distortion and choice overload might explain why both QS components are necessary. The quadratic cost function corrects for the perceptual distortion in how participants express preference intensity, addressing the underestimation that occurs with linear scales as preference differences grow larger. Meanwhile, the budget constraint reduces the decision space, mitigating choice overload that leads to satisficing behaviors.  Together, these mechanisms create a survey instrument that better reflects survey participant's responses compared to their behaviors.
+\end{figure}
 
 
-\subsection{Takeaway for practitioners}
-Our findings offer several practical implications for practitioners employing preference elicitation methods. When selecting survey instruments, researchers should first clearly identify their measurement objectives. For simple individual preference rankings where intensity is not critical, Likert scales may provide adequate performance with greater simplicity, though our results indicate QS still offers modestly better alignment with revealed preferences. However, when measuring collective preferences that require aggregating varying preference intensities, QS significantly outperforms traditional methods, particularly in capturing strong preference differentials that Likert scales systematically underestimate. Both components of QS—the quadratic cost function and budget constraint—are essential for accurate preference elicitation, as removing either component (as in UQS or LS) substantially reduces performance. While different budget allocations show minimal differences in outcomes, our analysis suggests that a budget of 36 credits offers optimal stability from a Bayesian perspective, providing sufficient expressiveness without introducing unnecessary complexity.
+\subsubsection{Quadratic cost function reduces cognitive burden influencing pairwise rankings}
+This expanded decision space also undermines LS's ability to preserve pairwise rankings. When a participant allocates $x$ votes to one option, they face a wide range of subsequent options (e.g., $x+1$ to the remaining budget) to express stronger preferences elsewhere. The linear cost in LS increases the number of allocation paths, raising the cognitive demand required to maintain consistent relative preferences. In contrast, QS's quadratic cost structure progressively narrows this decision space, easing the cognitive burden and facilitating more consistent preference rankings. This cognitive burden likely contributes to inconsistent pairwise rankings and could explain why participants increasingly underutilize the full budget at higher levels (\Cref{fig:credit_usage_descending}). %This likely contributes to noisier and more inconsistent survey pairwise rankings.
+
+\subsection{The role of Budget: Anchor and a Sense of Scarcity}
+UQS performs similarly to LS, likely due to two key factors. First, without a fixed budget, participants face unlimited allocation options, eliminating clear opportunity costs and tradeoffs. This can result in more extreme allocations or exaggerated expressions (e.g., one participant allocated 105 votes to a single option). Second, without a budget constraint, participants lack a stable reference for a 'preference unit,' since the meaning or weight of each additional vote shifted with each allocation. This undermines anchoring~\cite{daniel2017thinking, tverskyJudgmentUncertaintyHeuristics1974}, often necessary for initiating preference construction~\cite{lichtensteinConstructionPreference2006}, and further expands the decision space. We observe that less than half of participants spend more than 38 credits, followed by a long tail of credit usage (\Cref{fig:uqs_usage}), possibly due to cognitive overload or because they felt further input was unnecessary. This behavior constrained the expansive decision space, suggesting that budget limits may help regulate expressive intensity.
+
+\paragraph{In summary,} QS's quadratic cost function helps mitigate distortions caused by perceptual biases and choice overload, particularly when participants express large differences between options. The fixed budget constraint anchors participants' interpretations of preference units and limits the decision space, thereby reducing cognitive load and supporting more accurate expression.
+
+Together, these mechanisms likely explain why QS aligns more closely with participants' behavioral outcomes than the alternatives. While each mechanism is grounded in prior literature and supported by our findings, their interaction remains unclear. Perceptual distortion, overload, and anchoring may be interdependent rather than isolated effects. Future research should investigate how participants' internally valued preferences map onto their expressed responses in QS surveys. Cognitive interviews aimed at constructing mental models could reveal how participants interpret budget constraints, cost structures, and manage preference tradeoffs during preference construction.
+
+\subsection{Takeaway for QS practitioners}
+Our findings offer several practical implications for practitioners employing QS in preference elicitation:
+
+\paragraph{Balancing simplicity and accuracy for basic ranking tasks}
+Likert surveys may suffice for simple rankings that do not require aggregation, given their simplicity. While QS still yields slightly better alignment with behavioral outcomes, the added complexity may not be justified in low-stakes or ordinal-only contexts.
+
+\paragraph{QS excels in capturing preference intensity and enabling aggregation}
+QS is particularly effective for capturing nuanced differences in preference strength across competing options and aggregating those preferences across individuals. Our results demonstrate that QS significantly outperforms traditional methods in capturing preference intensities and enabling aggregation.
+
+\paragraph{Do not compromise the QS mechanism}
+Both the quadratic cost function and the budget constraint are essential for QS to function effectively. Removing either component (as in LS or UQS) substantially reduces performance. Since these features introduce cognitive load, it is essential to design usable interfaces that support participants' preference construction process.
+
+\paragraph{Credit budget matters less, but a medium range is recommended}
+Although we observed no statistically significant differences among QS36, QS108, and QS324, Bayesian analysis consistently favored QS108 for stable, balanced outcomes.
 
 \section{Limitations and Future work}
 \label{sec:limitations}
 
-\paragraph{`True preferences' and survey instruments}
-It is important to acknowledge limitations in our approach to measuring "true preferences." While donation behaviors aim to mirror tangible, monetary contributions with real stakes creating incentive compatibility, not all preferences are naturally expressed through monetary means. External factors such as prior charitable giving, personal connections to causes, or tax implications might influence donation decisions independent of underlying preference structures.
+\paragraph{Limitations of donation-based preference elicitation}
+Behavioral donation tasks are widely used in prior research to approximate "true preferences" through real-stakes decisions for survey validation. While the donation task in this study was adapted from prior designs to ensure incentive compatibility and behavioral realism, not all preferences are naturally expressed through monetary contributions. Participants' mental models, shaped by donation amounts, prior giving, or personal motivations, may differ from those guiding their responses to survey instruments. Moreover, although charitable donations offer incentive-aligned behavior, the domain involves distinct social and motivational factors that may not generalize to other allocation contexts. Governmental resource allocation, for instance, includes political accountability, public transparency, and long-term planning considerations. Future field studies applying QS in public decision-making settings could further assess its generalizability.
 
-% While donation behavior serves as a proxy for "true preferences" due to its incentive-compatible nature, not all preferences are expressed monetarily. Factors such as previous charitable giving, personal connections, or tax implications may influence donation decisions independently of underlying preferences.
-
-
-\paragraph{Charities and government resource allocation}
-Our experimental design using charitable donations as a proxy for preference intensity may not fully capture the dynamics of government resource allocation decisions. Charitable giving operates under different incentive structures and social contexts compared to public resource allocation. Government spending decisions typically involve complex political considerations, longer-term consequences, and different accountability mechanisms that our experiment cannot fully simulate. Future research could examine QS applications in field studies of actual resource allocation decisions.
-
-\paragraph{Future Work: mental model construction of QS respondents}
-This paper layed the ground for future research to conduct interview and construct mental models to better understand how one constructs and balance between perceived preferences (internal valuation) and presented preferences (expressed through the survey mechanism). Our results suggest that QS helps correct distortions in how people express preference intensity, but the precise cognitive mechanisms remain unclear. Prior literature has highlighted this gap but cognitive interviews could elucidate how participants interpret and navigate the quadratic cost structure.
-
-\paragraph{Future Work: comparing QS with other forced-choice methods}
-LS's less effective outcome makes future comparative analysis between QS and other forced-choice preference elicitation tools such as Knapsack Surveys (KS) and conjoint analysis important. Each method employs different constraints and mechanisms to reveal preference intensity. Understanding how these methods perform across various decision contexts and preference distributions would help practitioners select appropriate tools for specific applications. Future research should focus on 
-
-Such comparisons should examine not only elicitation accuracy but also user experience, cognitive load, and susceptibility to strategic manipulation.
+\paragraph{Future work: comparing QS with other forced-choice methods}
+The limited performance of LS highlights the need for future comparative studies between QS and other forced-choice preference elicitation tools, such as Knapsack Surveys (KS) and conjoint analysis. These methods rely on different constraints and mechanisms to reveal preference intensity. Comparing them across decision contexts and preference distributions would help practitioners identify the most appropriate tools. Future evaluations should consider elicitation accuracy, cognitive load, and user experience.

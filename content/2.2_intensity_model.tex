@@ -1,8 +1,8 @@
 Following the ordinal comparisons,~\textbf{intensity model} assesses how effectively instruments capture the magnitude of preference differences between options. This model evaluates how well an instrument reflects varying degrees of preference along a continuum.
 
-\paragraph{Aligning the variables} Constructing a intensity model to compare the different instruments is not trivial, since elicited values are continuous and others are ordinal. We took a conservative approach and model likert scale and QS votes as ordinal values, especually when it is not clear whether participants considering the varying costs associated with different votes for the latter. In contrast, LS reflects incremental additions on a scale, and UQS does not have a limit; hence, both are treated as continuous. Rather than solely using final outcomes from each instrument, we also incorporated the cost of votes for QSs, assuming each dollar increment shares the same ``monetary'' value.
+\paragraph{Aligning the variables} Constructing a intensity model to compare the different instruments is not trivial, since elicited values are continuous and others are ordinal. We took a conservative approach and model Likert scale and QS votes as ordinal values, especially when it is not clear whether participants considering the varying costs associated with different votes for the latter. In contrast, LS reflects incremental additions on a scale, and UQS does not have a limit; hence, both are treated as continuous. Rather than solely using final outcomes from each instrument, we also incorporated the cost of votes for QSs, assuming each dollar increment shares the same ``monetary'' value.
 
-For instruments with bounded, continous budgets (e.g., \textit{QSC\_36}, \textit{QSC\_108}, \textit{QSC\_324}) and linear surveys (\textit{LS\_18}, \textit{LS\_54}, \textit{LS\_162}), we project vote differences onto the $[0,1]$ interval. Since UQS lacks fixed bounds, we normalize the vote difference $V$ between two options $t_1$ and $t_2$ over the $k'$ options that the participant voted on:
+For instruments with bounded, continuous budgets (e.g., \textit{QSC\_36}, \textit{QSC\_108}, \textit{QSC\_324}) and linear surveys (\textit{LS\_18}, \textit{LS\_54}, \textit{LS\_162}), we project vote differences onto the $[0,1]$ interval. Since UQS lacks fixed bounds, we normalize the vote difference $V$ between two options $t_1$ and $t_2$ over the $k'$ options that the participant voted on:
 
 \begin{equation}
     \text{Vote\_diff}_{UQS} 
@@ -18,7 +18,7 @@ To facilitate a direct comparison, we transform the ordinal results into an unob
     \boldsymbol{\alpha} \sim \mathrm{Dirichlet}\bigl(\mathbf{1}\cdot \delta\bigr)
 \end{equation}
 
-We moded the distribution with $\delta=2$ as a weakly informative prior over the latent cutpoints. We pad this vector so that $\alpha_0 = 0$, then map each category $k$ to a latent continuous value:
+We modeled the distribution with $\delta=2$ as a weakly informative prior over the latent cutpoints. We pad this vector so that $\alpha_0 = 0$, then map each category $k$ to a latent continuous value:
 
 \begin{equation}
     x_{\mathrm{latent}}^{(k)} = \sum_{j=0}^{k} \alpha_j.
