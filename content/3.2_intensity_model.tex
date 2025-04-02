@@ -1,0 +1,66 @@
+The pairwise intensity model evaluates how effectively each survey instrument captures the magnitude of preference differences between options. We seek to model how the response difference between two options on a survey $\Delta_{\text{Survey}}$ \emph{predicts} the donation difference $\Delta_{\text{Donation}}$. Besides the eight survey conditions in the pairwise ranking model, we additionally analyze the number of credits spent on an option in QS (three budgets) and UQS (\Cref{tbl:experiment_cond}).
+
+Comparing preference differences elicited via various survey instruments ($\Delta_{\text{Survey}}$) to donations ($\Delta_{\text{Donation}}$) is not trivial since some yielded continuous data while others were ordinal. Following the convention, we model $\Delta_{\text{Likert}}$ as ordinal data. Given the uncertainty about how participants accounted for the varying costs associated with QS votes, we treat $\Delta_{\text{QS Vote}}$ as ordinal as well. In contrast, LS votes increment with a consistent cost on a scale, therefore modeled as a continuous variable. UQS has no upper limit; hence, it is not ordinal. Finally, QS credits and monetary donations are continuous by nature.
+
+Another challenge of this comparison is that raw differences from various instruments ($\Delta_{\text{Survey Raw}}$) and $\Delta_{\text{Donation Raw}}$ fall into varying data ranges. Thus, we apply the following data normalizations.
+
+\paragraph{Normalize Continuous Survey Difference} We apply a variation of min-max scaling to project continuous $\Delta_{\text{Survey Raw}}$ onto the $[-1,1]$ interval\footnote{$\frac{x-min(x)}{(max(x) - min(x))}\times 2 - 1$}. For QS Credits and LS, we use the pre-defined bounds as the $min$ and $max$ in scaling. Since UQS lacks fixed bounds, we calculate the $min$ and $max$ for each participant based on the total votes and credits they used.
+
+\paragraph{Normalize Ordinal Survey Difference} 
+To enable direct comparison with continuous data, we project ordinal difference categories onto a latent continuous scale between 0 and 1, using cutpoints drawn from a Dirichlet-based model. Specifically, for each instrument, we derive $K$ discrete ordinal \emph{difference} categories. For example, vote difference in QS36 has 17 possible difference categories ($\Delta_{\text{QS36 Vote Raw}} = [-8, -7, ..., 7, 8]$)\footnote{Here, the largest vote difference possible with 36 credits occurs with 5 votes on option A and $-3$ votes on option B.}. We sample the second to $K$th elements of cutpoints \(\boldsymbol{\alpha}\) from a Dirichlet$(\mathbf{1}\cdot\delta)$ with $\delta=2$ as a weakly informative prior so that they sum to 1:
+
+\begin{equation}
+    \boldsymbol{\alpha}_{[2, ...,K]} \sim \mathrm{Dirichlet}\bigl(\mathbf{1}\cdot \delta\bigr), \text{where } \delta = 2
+\end{equation}
+
+The first cutpoint $\alpha_{1} = 0$. We then map ordinal $\Delta_{\text{Survey Raw}}=k$ to a latent continuous value between $[0,1]$ as $\Delta_{\text{Survey}}$:
+
+\begin{equation}
+    \text{For }\Delta_{\text{Survey Raw}}=k\text{, } \Delta_{\text{Survey}} = \sum_{j=1}^{k} \alpha_j.
+\end{equation}
+
+\paragraph{Normalize Donation Difference} Finally, we apply the same variation of min-max scaling to the donation differences of each participant based on their total donation amount. $\Delta_{\text{Donation}}$ ranges from $[-1, 1]$.
+
+\textbf{Model Specification:} We model $\Delta_{\text{Donation}}$ as a Normal distribution:
+
+\begin{equation}
+    \label{eq:intensity_normal}
+    \Delta_{\text{Donation}_i} \sim \mathcal{N}(\mu_{D_i}, \sigma_{D_i}).
+\end{equation}
+
+Since it is reasonable to expect that the variance in donation differs across experiment conditions, we make 
+$\sigma_{D_i}$ condition-dependent: $\sigma_i=\beta_{\sigma}[C_i]$, where $\beta_{\sigma}[C_i]$ is drawn from the prior $\mathrm{Exponential}(1)$. $\mu_{D_i}$ is predicted by a linear regression of survey response difference $\Delta_{\text{Survey}_i}$, survey instrument $C_i$, survey order $O_i$, and topics $T_{1i}$, $T_{2i}$. 
+
+\begin{equation}
+    \label{eq:intensity_linpred}
+    \mu_i
+    =
+    \beta_{\text{S}}[C_i] \cdot \Delta_{\text{Survey}_i}
+    +
+    \beta_{c}[C_i]
+    +
+    \beta_{o}[O_i]
+    +
+    \beta_{t}[T_{1i}]
+    +
+    \beta_{t}[T_{2i}].
+\end{equation}
+
+We model the slope of survey response differences $\beta_{\text{S}}$ for each survey condition with partial pooling and non-centered parameterization.
+
+\begin{align}
+    \beta_{\text{S}}[C_i]
+    &=
+    \mu_{\beta_{\text{vote}}}
+    + \sigma_{\beta_{\text{vote}}} \cdot \eta_{\beta_{\text{vote}}}[C_i],
+    \quad \eta[c_i] \sim \mathcal{N}(0, 1) \\
+    \mu_{\beta_{\text{vote}}}
+    &\sim
+    \mathcal{N}(0,1),
+    \quad
+    \sigma_{\beta_{\text{vote}}}
+    \sim
+    \mathrm{Uniform}(0,1).
+\end{align}
+
+We model intercepts $\beta_{o}$ and $\beta_{t}$ in a similar way but with a hyper-prior of $\mu_{\beta} \sim \mathcal{N}(0,0.1)$. Finally, we sample the condition-based intercept $\beta_{c}$ from the prior $\mathcal{N}(0,0.2)$ without pooling. 

@@ -1,0 +1,17 @@
+\section{Modeling for Pairwise Ranking and Preference Intensity Analyses}
+\label{sec:quantitative_measures}
+Two recent empirical studies have evaluated whether elicited survey responses align with participant behavior, using outcomes such as charitable donations~\cite{chengCanShowWhat2021, cavaille2024cares} or letter-writing effort~\cite{cavaille2024cares} as behavioral proxies for underlying preferences. One approach used Bayesian cosine similarity to compare high-dimensional response vectors with behavioral outcomes~\cite{chengCanShowWhat2021}; another applied linear regression to estimate the gap between stated and revealed preferences~\cite{cavaille2024cares}.
+
+However, cosine similarity poses interpretability challenges: vectors with identical pairwise rankings can still be judged dissimilar, while near-aligned vectors may reflect contradictory preferences. Moreover, distinct behavioral measures (e.g., donations vs. letter writing) complicate comparisons of pairwise preferences across options within the same participant.
+
+To address these limitations, we evaluate survey instruments based on their ability to recover (1) \textit{pairwise preference rankings} and (2) \textit{preference intensity differences} between options, within participants. This dual evaluation draws from methods used in studies of point-allocation and forced-choice surveys~\cite{collewetPreferenceEstimationPoint2023}, and allows us to separately assess ordinal and interval-level performance. 
+
+We employ Bayesian modeling in both cases to support transparent assumptions, account for uncertainty, and enable interpretation beyond binary significance thresholds~\cite{mcelreath2018statistical, kay2016researcher}. The two models are described below.
+
+\subsection{Pairwise Ranking Model}
+\label{sec:ordinal_measures}
+\input{content/3.1_ordinal_model.tex}
+
+\subsection{Pairwise Preference Intensity Model}
+\label{sec:interval_measures}
+\input{content/3.2_intensity_model.tex}
