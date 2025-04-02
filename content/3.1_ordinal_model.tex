@@ -1,0 +1,28 @@
+Our first analysis evaluates how well different survey instruments capture pairwise rankings that align with those inferred from actual donation amounts. We model the binary observation ($y_i$) of whether a participant $i$'s pairwise ranking expressed via the survey instrument matches that from the donation results for a given societal issue pair as a Bernoulli distribution in \Cref{eq:ordinal_model_overall}:
+
+\begin{equation}
+    \label{eq:ordinal_model_overall}
+    y_i \sim \text{Bernoulli}(\theta_i)
+\end{equation}
+
+The alignment probability, $\theta_i$, is defined using a logit link function (Equation~\ref{eq:ordinal_model_logit}) and modeled as a function of several experimental variables:
+
+\begin{equation}
+    \label{eq:ordinal_model_logit}
+    \text{logit}(\theta_i) = \alpha + \beta_c[C_i] + \beta_o[O_i] + \beta_p[P_i] + \beta_t[T_{1i}] + \beta_t[T_{2i}]
+\end{equation}
+
+The variables represent experimental conditions and relevant controls. Specifically, $C_i$ denotes the survey instrument, spanning eight conditions (see \Cref{tbl:experiment_cond}\footnote{Since this model only considers pairwise rankings, UQS and QS votes and credits yield the same result.}): three QS variants with different budgets, three LS variants with different budgets, Likert scale survey, and UQS. Since some participants worked on multiple survey instruments, $O_i$ captures the order in which the participant completed survey $C_i$ to account for ordering effects. In addition, $P_i$ represents whether a participant’s pairwise ranking in an earlier survey aligned with the donation-based ranking, accounting for carryover effects. Lastly, $T_{1i}$ and $T_{2i}$ account for the topic-level effects of the two issues in comparison.
+
+Given the complexity and nested structure of the data, we used a hierarchical Bayesian logistic regression model with non-centered parameterization~\cite{mcelreath2018statistical}. Hierarchical modeling enables partial pooling across different experimental conditions or topic pairings, which improves estimate robustness~\cite{mcelreath2018statistical}. 
+
+The coefficients of each experiment variable ($\beta_{c}$, $\beta_{o}$, $\beta_{p}$, and $\beta_{t}$) are modeled using a hierarchical structure, drawn from a normal distribution centered at a group-level mean $\mu_{\beta}$ and scaled by a group-level standard deviation $\sigma_{\beta}$. For example, the hierarchical structure of coefficient $\beta_c$ for the survey condition variable $C_i$ is defined as: 
+
+\begin{align}
+    \label{eq:generic_non_center_hyper_C}
+    \beta_c[C_i] &= \mu_{\beta_c} + \sigma_{\beta_c} \cdot \eta[C_i], \quad \eta[c_i] \sim \mathcal{N}(0, 1) \\
+    \mu_{\beta_c} &\sim \mathcal{N}(0, 0.5), \quad   \sigma_c \sim \mathrm{Uniform}(0,1) 
+\end{align}
+
+Other coefficients follow the same structure, but some have different hyper-priors. Specifically, topic coefficients $\beta_{t}$ use a narrower hyper-prior $\mu_{\beta_t} \sim \mathcal{N}(0,0.25)$ to reflect a smaller expected effect.
+
