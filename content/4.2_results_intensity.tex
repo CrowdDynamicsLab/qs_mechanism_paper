@@ -1,14 +1,14 @@
 \subsection{Results Part II: Preference Intensity Analysis}
 \label{sec:result_2}
 
-\begin{figure}[h]
+\begin{figure*}[h]
     \centering
     \includegraphics[width=\textwidth]{content/image/intensity_2sd.pdf}
     \caption{
     The posterior predictive distributions of donation differences for various surveying tools, assuming that the surveyed preference difference between two options is 2 standard deviations (SD) within our dataset's all pairwise differences. The x-axis displays predicted mean donation differences, while the y-axis represents posterior density, indicating the probability of various predicted mean donation differences occurring. The region indicated by the bolded black line represents the 94\% Highest Density Interval (HDI), providing the most credible range for the predicted donation difference. A vertical gold line at 0.38 reflects the ``perfect'' donation value corresponding to a 2 SD-surveyed preference difference. In this plot, aside from QS (votes and credit), other surveying tools produced donation predictions that fell short of the 0.38 threshold, suggesting that these tools overly expressed preference intensity rather than accurately capturing it.~\textbf{Main takeaway:} QS is capable of capturing the intensity of medium-sized (2 SD) preference differences between options accurately.
     }
     \label{fig:donation_posterior}
-\end{figure}
+\end{figure*}
 
 
 \textbf{Results interpretation:} With the fitted intensity model, we calculate the posterior predictive distribution of the mean of donation differences ($\mu_{\Delta_{\text{Predicted Donation}}}$), given a preference difference intensity between any two options elicited by a survey tool ($\Delta_{\text{Survey}}$). Three such distributions are constructed for each survey tool, one for a small, medium, and large preference difference elicited by the tool respectively (i.e., $\Delta_{\text{Survey}}$ = 0.19, 0.38, 0.57, corresponding to $median(\Delta_{\text{Survey}})+k \times std(\Delta_{\text{Survey}})$, where $k=1, 2, 3$). We then perform two comparison tasks using these posterior distributions of $\mu_{\Delta_{\text{Predicted Donation}}}$. 
