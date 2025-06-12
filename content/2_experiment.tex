@@ -5,16 +5,15 @@ This section adopts an experimental design consistent with prior research's prot
 \begin{figure*}[t]
     \centering
     \includegraphics[width=\textwidth]{content/image/whyqs_exp_flow.pdf}
-    \caption{Experimental design of this study. Our study mirrors the structure of prior work (top,~\cite{chengCanShowWhat2021}), differing only in the opinion collection methods (bottom). This study introduced UQS and LS conditions. The timeline below segments the procedure into four stages, highlighting how our approach mirrors prior work: stratified sampling, opinion collection, filler task, and behavioral task.}
+    \caption{Experimental design. Our study mirrors the structure of prior work (top,~\cite{chengCanShowWhat2021}), differing only in the opinion collection methods (bottom). This study introduced UQS and LS conditions. The timeline below segments the procedure into four stages, highlighting how our approach mirrors prior work: stratified sampling, opinion collection, filler task, and behavioral task.}
     \label{fig:experiment}
 \end{figure*}
 
 \subsection{Experiment Design}
-
-To ensure comparability with prior work~\cite{chengCanShowWhat2021} for subsequent analysis, we retained the original between-subjects design and extended the survey software to implement two additional instruments, yielding four new experimental conditions. The subsections below describe procedural modifications, while the choice of survey methods and the donation task is guided by previous research. Figure~\ref{fig:experiment} illustrates how this study fits within the broader experimental flow established by prior work.
+To ensure comparability with prior work~\cite{chengCanShowWhat2021} for subsequent analysis, we retained the original between-subjects design and extended their survey software to implement two additional instruments, yielding four new experimental conditions. The study's survey context and donation task remain unchanged, while the procedural modifications are described in the following subsections. Figure~\ref{fig:experiment} illustrates how this study fits within the broader experimental flow established by prior work.
 
 \paragraph{Additional Experimental Conditions}
-We introduced four new experimental conditions, grouped into two categories: UQS and LS. In the UQS condition, we removed the budget constraint to isolate the effect of the quadratic cost function. In the LS conditions, we replaced the quadratic cost function with a linear one and further subdivided these into three levels based on budget size:
+We introduced four new experimental conditions, grouped into two categories: UQS and LS. In the UQS condition, we removed the budget constraint to isolate the effect of the quadratic cost function. In the LS conditions, we replaced the quadratic cost function with a linear one and subdivided the design into three budget levels:
 
 \begin{itemize} 
     \item LS18: A small-budget Linear Survey with 18 credits
@@ -22,10 +21,10 @@ We introduced four new experimental conditions, grouped into two categories: UQS
     \item LS162: A large-budget Linear Survey with 162 credits
 \end{itemize}
 
-Following prior work, we allocated two credits per option to match the expressiveness of a 5-point Likert scale, allowing participants to indicate moderate intensity in either direction. With nine options, this yielded 18 credits for the LS18 condition. We then scaled the budgets using $O(K)$, $O(K^{1.5})$, and $O(K^2)$ to generate LS18, LS54, and LS162, respectively—for example, $2 \times 9^{1.5} = 54$ in LS54.
+Following prior work, we allocated two credits per option, allowing participants to assign up to $\pm2$, which mirrors the expressive range of a 5-point Likert scale and enables them to express moderate intensity in either direction. With nine options, this corresponds to 18 credits for the LS18 condition. We then scaled the budgets using $O(K)$, $O(K^{1.5})$, and $O(K^2)$ to derive LS18, LS54, and LS162, respectively. For example, $2 \times 9^{1.5} = 54$ is LS54.
 
 \subsubsection{Survey content}
-The study frames the survey as a public resource allotment task, where participants express preferences across 9 societal issues such as education, environment, or health. Participants expressed their degree of preference by assigning positive or negative votes under the UQS or LS mechanism.
+The study frames the survey as a collective decision-making task, where participants express preferences across $9$ societal issues such as education, environment, or health. Participants expressed their degree of preference by assigning positive or negative votes under the UQS or LS mechanism.
 
 \subsubsection{Surveying process and interface}
 Participants in both groups were first introduced to the survey and how to use it via a video tutorial. To ensure their understanding of the survey mechanism, participants were asked to complete a quiz with 5 multiple-choice questions. A minimum of three correct answers was required to proceed. We altered the questions based on the survey mechanisms. The interfaces for UQS and LS are shown in~\Cref{fig:extended_interface}.
@@ -54,18 +53,16 @@ Participants in both groups were first introduced to the survey and how to use i
     \label{fig:extended_interface}
 \end{figure*}
 
-
-
 \subsubsection{Filler task and donation}
-After the survey, participants completed a filler task to prevent direct association with the issues and the charities listed on the donation task page. Participants then made donations to a set of charities, each representing a different cause.
+After the survey, participants completed a filler task to reduce direct association between survey options and the charities in the donation task. Participants then donated to a set of charities, each representing a distinct cause.
 
 \subsubsection{Debrief and Compensation}
-After the study, participants were debriefed about the study's purpose via a debriefing page. Participants were compensated with \$1.50 for their time and informed they would receive an additional \$0.50 upon completing the study.
+After the study, a debriefing page informed participants of the study’s purpose. Participants were compensated with \$2.50 for their time.
 
 \subsection{Participant Recruitment and Integrating Prior Data}
 This study includes both newly collected and publicly available data. We recruited 202 Amazon Mechanical Turk (MTurk) participants using stratified sampling to approximate U.S. census distributions across age, gender, income, and education. Participants were randomly assigned to one of the newly introduced experimental conditions (LS and UQS). This sampling strategy aimed to mitigate demographic imbalances in participation~\cite{redmilesHowWellMy2019}.
 
-Data from previous QS and Likert scale conditions were obtained from published work~\cite{chengCanShowWhat2021} and included in this study for comparative evaluation. It covered 219 MTurk participants across two survey types covering four experimental conditions: Likert scale survey and QS with three credit budget variants (36, 108, and 324). The dataset and code from prior work enabled comparative evaluation alongside additional experimental conditions introduced in this study.
+We obtained data from previous QS and Likert scale conditions published in~\cite{chengCanShowWhat2021} and included it in this study for comparative evaluation. It covered 219 MTurk participants across two survey types and four experimental conditions: a Likert scale survey and QS with three credit budgets (36, 108, and 324).
 
 To support comparisons across methods, we distinguish between the number of votes assigned to each option (used in the original QS analysis) and the total credits spent per option, which better reflects the cost-based intensity embedded in the quadratic mechanism. We refer to these cost-based representations as QSC36, QSC108, and QSC324.
 

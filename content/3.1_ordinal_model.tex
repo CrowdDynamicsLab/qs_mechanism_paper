@@ -5,7 +5,7 @@ Our first analysis evaluates how well different survey instruments capture pairw
     y_i \sim \text{Bernoulli}(\theta_i)
 \end{equation}
 
-The alignment probability, $\theta_i$, is defined using a logit link function (Equation~\ref{eq:ordinal_model_logit}) and modeled as a function of several experimental variables:
+The alignment probability, $\theta_i$, is defined via a logit link function (Eq.~\ref{eq:ordinal_model_logit}) and modeled as a function of several experimental variables:
 
 \begin{equation}
     \label{eq:ordinal_model_logit}
@@ -16,7 +16,9 @@ The variables represent experimental conditions and relevant controls. Specifica
 
 Given the complexity and nested structure of the data, we used a hierarchical Bayesian logistic regression model with non-centered parameterization~\cite{mcelreath2018statistical}. Hierarchical modeling enables partial pooling across different experimental conditions or topic pairings, which improves estimate robustness~\cite{mcelreath2018statistical}. 
 
-The coefficients of each experiment variable ($\beta_{c}$, $\beta_{o}$, $\beta_{p}$, and $\beta_{t}$) are modeled using a hierarchical structure, drawn from a normal distribution centered at a group-level mean $\mu_{\beta}$ and scaled by a group-level standard deviation $\sigma_{\beta}$. For example, the hierarchical structure of coefficient $\beta_c$ for the survey condition variable $C_i$ is defined as: 
+We model the coefficients of each experiment variable ($\beta_{c}$, $\beta_{o}$, $\beta_{p}$, and $\beta_{t}$) using a hierarchical structure, drawn them from a normal distribution centered at a group-level mean $\mu_{\beta}$ and scaled by a group-level standard deviation $\sigma_{\beta}$. For example, the hierarchical structure of the coefficient $\beta_c$ for the survey condition variable $C_i$ is defined as: 
+
+\vspace{-1em}
 
 \begin{align}
     \label{eq:generic_non_center_hyper_C}
