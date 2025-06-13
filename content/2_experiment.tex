@@ -1,6 +1,6 @@
 \section{Experiment Design}
 \label{sec:experiment}
-This section adopts an experimental design consistent with prior research's protocols~\cite{chengCanShowWhat2021}, and was reviewed and approved by an IRB.
+This section adopts an experimental design consistent with prior research protocols~\cite{chengCanShowWhat2021}, and was reviewed and approved by an IRB.
 
 \begin{figure*}[t]
     \centering
@@ -16,9 +16,9 @@ To ensure comparability with prior work~\cite{chengCanShowWhat2021} for subseque
 We introduced four new experimental conditions, grouped into two categories: UQS and LS. In the UQS condition, we removed the budget constraint to isolate the effect of the quadratic cost function. In the LS conditions, we replaced the quadratic cost function with a linear one and subdivided the design into three budget levels:
 
 \begin{itemize} 
-    \item LS18: A small-budget Linear Survey with 18 credits
-    \item LS54: A medium-budget Linear Survey with 54 credits
-    \item LS162: A large-budget Linear Survey with 162 credits
+    \item LS18: A small-budget LS with 18 credits
+    \item LS54: A medium-budget LS with 54 credits
+    \item LS162: A large-budget LS with 162 credits
 \end{itemize}
 
 Following prior work, we allocated two credits per option, allowing participants to assign up to $\pm2$, which mirrors the expressive range of a 5-point Likert scale and enables them to express moderate intensity in either direction. With nine options, this corresponds to 18 credits for the LS18 condition. We then scaled the budgets using $O(K)$, $O(K^{1.5})$, and $O(K^2)$ to derive LS18, LS54, and LS162, respectively. For example, $2 \times 9^{1.5} = 54$ is LS54.
@@ -36,7 +36,7 @@ Participants in both groups were first introduced to the survey and how to use i
     \begin{subfigure}{0.75\textwidth}
         \centering
         \includegraphics[width=\textwidth]{content/image/linear.png}
-        \caption{Linear Survey Interface, each additional vote is $1$ credit}
+        \caption{LS Interface: each additional vote is $1$ credit}
         \label{fig:qs_interface}
     \end{subfigure}
     
@@ -45,7 +45,7 @@ Participants in both groups were first introduced to the survey and how to use i
     \begin{subfigure}{0.75\textwidth}
         \centering
         \includegraphics[width=\textwidth]{content/image/uqs.png}
-        \caption{Unlimited Quadratic Survey Interface, each additional vote is $n^2$ credits but does not have a budget constraint}
+        \caption{UQS Interface: each additional vote is $n^2$ credits but does not have a budget constraint}
         \label{fig:css_interface}
     \end{subfigure}
     
@@ -66,7 +66,7 @@ We obtained data from previous QS and Likert scale conditions published in~\cite
 
 To support comparisons across methods, we distinguish between the number of votes assigned to each option (used in the original QS analysis) and the total credits spent per option, which better reflects the cost-based intensity embedded in the quadratic mechanism. We refer to these cost-based representations as QSC36, QSC108, and QSC324.
 
-Altogether, our study evaluates four types of survey instruments: QS, Likert scale surveys, LS, and UQS. As summarized in~\Cref{tbl:experiment_cond}, we cover 11 experimental conditions, including three LS budget levels and three QS conditions evaluated using both vote- and cost-based measures. All survey responses were assessed against participant behavior in an incentive-compatible donation task, which serves as a shared behavioral benchmark.
+Altogether, our study evaluates four types of survey instruments: QS, Likert scale survey, LS, and UQS. As summarized in~\Cref{tbl:experiment_cond}, we cover 11 experimental conditions, including three LS budget levels and three QS conditions evaluated using both vote- and cost-based measures. All survey responses were assessed against participant behavior in an incentive-compatible donation task, which serves as a shared behavioral benchmark.
 
 \begin{table*}[h]
     \centering
