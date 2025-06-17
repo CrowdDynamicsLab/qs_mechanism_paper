@@ -1,6 +1,7 @@
 \documentclass[sigconf]{acmart}
 \settopmatter{authorsperrow=2} % not sure if this is allowed but this looks much better
 
+\usepackage{acmart-taps}
 \usepackage{enumitem}
 \usepackage{graphicx}  % another package that works for figures
 \usepackage{booktabs} % For formal tables
@@ -33,7 +34,7 @@
 \IncMargin{-\parindent}
 
 % Bibliography
-\bibliographystyle{ACM-Reference-Format}
+% \bibliographystyle{ACM-Reference-Format}
 \usepackage{url}
 
 \definecolor{lightgray}{gray}{0.9}
@@ -120,6 +121,7 @@
 
 
 % \printbibliography
+\bibliographystyle{ACM-Reference-Format}
 \bibliography{tcheng, references}
 
 % TC:ignore

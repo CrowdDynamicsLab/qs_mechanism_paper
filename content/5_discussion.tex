@@ -33,10 +33,23 @@ We define a 'preference unit' as the incremental amount a participant uses to ex
 Even if participants do not explicitly interpret preference units in monetary terms, psychophysics offers similar concepts. According to the Weber-Fechner law~\cite{dehaeneNeuralBasisWeber2003, kruegerReconcilingFechnerStevens1989}, the just noticeable difference between stimuli is proportional to the baseline stimulus intensity. As the marginal difference between options appears to shrink, participants may feel their previous input was insufficient and overcorrect as a result. Early CSS validation by~\citet{dudekValidityPointAssignmentProcedure1957} cautioned that participants may misjudge how well their numerical input reflects their subjective attitudes. Interestingly, Fechner's law~\cite{kruegerReconcilingFechnerStevens1989} describes perception as following a logarithmic curve, which conceptually aligns with the quadratic cost structure in QS. In QS, the rising cost of additional votes may have corrected participants' diminishing perceptual increments, helping to mitigate exaggerations in expressed preferences stemming from participants' perceptual biases.
 
 \paragraph{Extreme response bias}
-Another plausible explanation involves the large decision space and the ease of expressing extreme opinions offered by LS. With the same budget size, participants face a wider array of allocation choices when votes incur a linear cost than a quadratic cost (e.g., 324 choices in LS162 vs. 25 choices in QS162 on an option). The psychology literature suggests that cognitive overload leads to satisficing~\cite{schwartzMaximizingSatisficingHappiness2002, iyengarWhenChoiceDemotivating2000}, where individuals settle for sufficient rather than optimal choices by relying on heuristics. As the allocated budget increased, participants increasingly underutilized their budgets, a pattern consistent with satisficing behavior~(\Cref{fig:credit_usage_descending}). With a satisficing mindset, rather than carefully weighing and quantifying the differences between options, participants may resort to exaggerating responses to signal distinctions between choices. While this exaggeration strategy is possible with both LS and QS, it was discouraged by the quadratic cost structure in QS. The quadratic cost function imposes increasing costs for each additional vote, which makes people think twice before expressing strong opinions. In LS, on the contrary, it does not cost much to exaggerate preferences since each vote carries equal weight. In summary, the quadratic cost structure in QS may have reduced the occurrences of exaggerated responses by alleviating cognitive load and imposing a higher cost to expressing extreme opinions.
+Another plausible explanation involves the large decision space and the ease of expressing extreme opinions offered by LS. With the same budget size, participants face a wider array of allocation choices when votes incur a linear cost than a quadratic cost (e.g., 324 choices in LS162 vs. 25 choices in QS162 on an option). The psychology literature suggests that cognitive overload leads to satisficing~\cite{schwartzMaximizingSatisficingHappiness2002, iyengarWhenChoiceDemotivating2000}, where individuals settle for sufficient rather than optimal choices by relying on heuristics. As the allocated budget increased, participants increasingly underutilized their budgets, a pattern consistent with satisficing behavior (Figure~\ref{fig:credit_usage_descending}). With a satisficing mindset, rather than carefully weighing and quantifying the differences between options, participants may resort to exaggerating responses to signal distinctions between choices. While this exaggeration strategy is possible with both LS and QS, it was discouraged by the quadratic cost structure in QS. The quadratic cost function imposes increasing costs for each additional vote, which makes people think twice before expressing strong opinions. In LS, on the contrary, it does not cost much to exaggerate preferences since each vote carries equal weight. In summary, the quadratic cost structure in QS may have reduced the occurrences of exaggerated responses by alleviating cognitive load and imposing a higher cost to expressing extreme opinions.
 % which lets individuals redistribute credits freely, since each vote carries equal weight. As the LS budget increases, the space of possible allocations grows rapidly. Consider LS18 and QS324, which both permit up to 18 votes~\footnote{Assuming all credits are allotted to a single option, 324 credits allows at most 18 votes which is equivalent to LS18.}; however, in QS, casting 18 votes incurs a significantly higher cost.  sharply narrowing the decision space and discouraging exaggerated responses.
 
+\aptLtoX[graphic=no,type=html]{\begin{figure}[ht]
+  \centering
+    \includegraphics[width=0.45\textwidth]{content/image/cumulative_distribution_credit_usage.pdf}
+    \caption[]{ Percentage of participants who fully utilized their credits across budget levels. As budgets increase, cumulative usage drops off more steeply.
+    \textbf{Takeaway:} Higher budgets lead to earlier and more widespread underutilization of credits.}   
+    \label{fig:credit_usage_descending}
+  \end{figure}
+  \hfill
 \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{content/image/uqs_credit_usage_distribution_logbins.pdf}
+    \caption[]{The credit usage distribution for UQS participants. The credit usage follows a long tail. Without an anchor, less than half of participants spend more than 38 credits across 9 options. \textbf{Takeaway:} Participants did not put in enough effort to use as many credits as needed to express nuanced differences between option preferences.}
+    \label{fig:uqs_usage}
+\end{figure}}{\begin{figure}[ht]
   \centering
 
   \begin{minipage}[t]{0.48\textwidth}
@@ -56,7 +69,7 @@ Another plausible explanation involves the large decision space and the ease of 
     \label{fig:uqs_usage}
   \end{minipage}
 
-\end{figure}
+\end{figure}}
 
 
 \subsubsection{The quadratic cost function reduces the cognitive burden influencing pairwise rankings}
